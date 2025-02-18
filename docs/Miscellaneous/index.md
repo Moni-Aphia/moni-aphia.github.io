@@ -1,0 +1,12 @@
+## 文章
+
+- 数据驱动方法识别动力学系统
+
+    - [数据驱动综述](./Paper/A%20Review%20of%20Data-Driven%20Discovery%20for%20Dynamics%20Equation.md)
+    - [数据驱动方法识别参数化偏微分方程](./Paper/Data-Driven%20Identification%20of%20Parametric%20Partial%20Differential%20Equations.md)
+
+- 软体机器人：
+    - [具有自我感知适应能力的仿生脊椎软体机器人](./Paper/An%20intelligent%20spinal%20soft%20robot%20with%20self-sensing%20adaptability.md)
+
+## 书籍
+

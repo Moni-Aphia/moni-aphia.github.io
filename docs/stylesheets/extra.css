@@ -1,0 +1,69 @@
+body {
+    font-family: "LXGW WenKai", sans-serif;
+    /* Lite version */
+    /* font-family: "LXGW WenKai Lite", sans-serif; */
+    /* TC version */
+    /* font-family: "LXGW WenKai TC", sans-serif; */
+    /* Screen version */
+    /* font-family: "LXGW WenKai Screen", sans-serif; */
+  }
+
+  
+button.md-top {
+    font-family: LXGW WenKai; /* 修改字体 */
+    font-size: 15px; /* 修改字体大小 */
+    font-weight: bold; /* 修改字体粗细 */
+    color: #518FC1; /* 修改字体颜色 */
+  }
+
+.submenu {
+    display: none;
+    margin-left: 20px;
+}
+.submenu.active {
+    display: block;
+}
+
+/* 调整底部导航栏的高度 */
+.md-footer {
+    padding: 5px; /* 调整上下内边距 */
+    font-size: 14px; /* 调整字体大小 */
+    min-height: 30px;
+
+}
+
+/* 调整底部导航栏内的链接样式 */
+.md-footer-nav__link {
+    padding: 5px 10px; /* 调整链接的内边距 */
+    font-size: 12px; /* 调整链接的字体大小 */
+    
+}
+
+.md-footer .md-icon {
+  font-size: 1rem; /* 你可以根据需要调整这个值 */
+}
+
+/* 调整底部版权信息的样式 */
+.md-footer-meta {
+    padding: 3px; /* 调整版权信息的内边距 */
+    font-size: 10px; /* 调整版权信息的字体大小 */
+}
+
+@media screen and (min-width: 960px) {
+    html {
+      font-size: 125%;
+    }
+  }
+  
+  @media screen and (min-width: 100em) {
+    html {
+      font-size: 125%;
+    }
+  }
+  
+  @media screen and (min-width: 125em) {
+    html {
+      font-size: 125%;
+    }
+  }
+  
