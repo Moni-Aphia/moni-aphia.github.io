@@ -40,9 +40,9 @@ theme:
 nav:
   - Home: 
     - index.md
-    - 写在前言: Intro/before/index.md
-    - 学期总结: Intro/summary/index.md
-    - 草稿: Intro/caogao/index.md
+   # - 写在前言: Intro/before/index.md
+   # - 学期总结: Intro/summary/index.md
+   # - 草稿: Intro/caogao/index.md
   - 通识教育:
     - 目录: Liber/index.md
     - 清代文化史: Liber/清代文化史.md
