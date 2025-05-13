@@ -11,10 +11,10 @@
     - [具有自我感知适应能力的仿生脊椎软体机器人](./Paper/An%20intelligent%20spinal%20soft%20robot%20with%20self-sensing%20adaptability.md)
 
 - 数学:
-  - [RSG 算法](./Paper/Stochastic%20First-And%20zeroth-Order%20Methods%20For%20Nonconvex%20Stochastic%20Programming.md)
+    - [RSG 算法](./Paper/Stochastic%20First-And%20zeroth-Order%20Methods%20For%20Nonconvex%20Stochastic%20Programming.md)
 
 
 ## 讲稿
 - 一席:
-  - [激进的共识](./Yixi/激进的共识.md) 
+    - [激进的共识](./Yixi/激进的共识.md) 
 

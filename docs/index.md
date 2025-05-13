@@ -6,8 +6,10 @@ readtime: false
 # Welcome to Moni Blog
 
 
-<center><font size = 6> 献给自己</font ></center>
 
+
+![alt text](123268615_p0.png)
+<center><font size = 6> 献给自己</font ></center>
 
 主要是学习（杂七杂八）的记录，不定期更新 (_ _)
 
