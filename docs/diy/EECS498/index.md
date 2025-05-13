@@ -17,7 +17,7 @@
 
 ## 资源目录
 
-笔记参考：[ComputerVision ](https://github.com/Michael-Jetson/ML_DL_CV_with_pytorch/tree/main/ComputerVision)
+笔记参考：[ComputerVision](https://github.com/Michael-Jetson/ML_DL_CV_with_pytorch/tree/main/ComputerVision)(大部分内容都是摘录上面的东西)
 
 参考资料：
 

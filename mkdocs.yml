@@ -40,15 +40,11 @@ theme:
 nav:
   - Home: 
     - index.md
-   # - 写在前言: Intro/before/index.md
-   # - 学期总结: Intro/summary/index.md
-   # - 草稿: Intro/caogao/index.md
-  - 通识教育:
-    - 目录: Liber/index.md
-    - 清代文化史: Liber/清代文化史.md
-  - 数理课:
-    - 目录: math_phys/index.md
-  - 专业课:
+    # - 写在前言: Intro/before/index.md
+    # - 学期总结: Intro/summary/index.md
+    # - 草稿: Intro/caogao/index.md
+
+  - 课程:
     - 目录: major/index.md
     - 理论力学: major/理论力学/理论力学.md
     - 材料力学: major/材料力学/材料力学.md
@@ -67,6 +63,15 @@ nav:
     - 工程热力学: major/工程热力学/工程热力学.md
     - 电工电子学及实验: major/电工电子学及实验/电工电子学及实验.md
     - 智柔体力学概论: major/智柔体力学概论.md
+    - 生物力学基础: 
+      - 目录: major/生物力学基础/index.md
+      - 绪论: major/生物力学基础/Intro.md
+      - 热力学基础: major\生物力学基础\therm.md
+      - 统计力学: major\生物力学基础\statmech.md
+      - 统计力学应用: major\生物力学基础\statmech II.md
+    - 计算流体力学:
+      - 计算流体力学: major/CFD/index.md
+    #- 清代文化史: Liber/清代文化史.md
   - 自学:
     - 目录: diy/index.md
     - 24暑假课程总结: diy/暑假课程记录.md
@@ -94,7 +99,7 @@ nav:
     - CS198:
       - Introduction For CS198: diy/CS198/CS198.md
 
-    
+    - Math notes: diy/Some MATH Notes.md
     
   - Miscellaneous : 
     - 目录: Miscellaneous/index.md
@@ -102,7 +107,12 @@ nav:
       - A Review of Data-Driven Discovery for Dynamics Equation: Miscellaneous/Paper/A Review of Data-Driven Discovery for Dynamics Equation.md
       - Data-Driven Identification of Parametric Partial Differential Equations: Miscellaneous/Paper/Data-Driven Identification of Parametric Partial Differential Equations.md
       - An intelligent spinal soft robot with self-sensing adaptability: Miscellaneous/Paper/An intelligent spinal soft robot with self-sensing adaptability.md
+      - Stochastic First-And zeroth-Order Methods For Nonconvex Stochastic Programming: Miscellaneous/Paper/Stochastic First-And zeroth-Order Methods For Nonconvex Stochastic Programming.md
     #- 读书笔记: 
+    - 一席: 
+      - About: Miscellaneous/Yixi/index.md
+      - 激进的共识: Miscellaneous/Yixi/激进的共识.md
+    
 
 copyright: Copyright &copy; 
 
@@ -186,6 +196,11 @@ markdown_extensions:
   - markdown.extensions.toc:
       slugify: !!python/object/apply:pymdownx.slugs.slugify {kwds: {case: lower}}
       permalink: "\ue157"
+  - pymdownx.pathconverter:
+      base_path: '' # default: ''
+      relative_path: '' # default ''
+      absolute: false # default: false
+      tags: 'a script img link object embed'
 
 extra_javascript:
   - javascripts/extra.js  #自定义javascript
