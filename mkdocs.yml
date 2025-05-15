@@ -66,9 +66,9 @@ nav:
     - 生物力学基础: 
       - 目录: major/生物力学基础/index.md
       - 绪论: major/生物力学基础/Intro.md
-      - 热力学基础: major\生物力学基础\therm.md
-      - 统计力学: major\生物力学基础\statmech.md
-      - 统计力学应用: major\生物力学基础\statmech II.md
+      - 热力学基础: major/生物力学基础/therm.md
+      - 统计力学: major/生物力学基础/statmech.md
+      - 统计力学应用: major/生物力学基础/statmech II.md
     - 计算流体力学:
       - 计算流体力学: major/CFD/index.md
     #- 清代文化史: Liber/清代文化史.md
@@ -86,8 +86,8 @@ nav:
       - Neural Networks: diy/EECS498/Neural Network.md
       - Convolutional Networks: diy/EECS498/Convolutional Networks.md
       - CNN Architectures: diy/EECS498/CNN Architectures.md
-      - Training Neural Networks Ⅰ: diy\EECS498\Training Neural Networks Ⅰ.md
-      - Training Neural Networks Ⅱ: diy\EECS498\Training Neural Networks Ⅱ.md
+      - Training Neural Networks Ⅰ: diy/EECS498/Training Neural Networks Ⅰ.md
+      - Training Neural Networks Ⅱ: diy/EECS498/Training Neural Networks Ⅱ.md
       - CNN Architectures Ⅱ: diy/EECS498/CNN Architectures Ⅱ.md
       - Object Detection: diy/EECS498/Object Detection.md
       - Object Detectors: diy/EECS498/Object Detectors.md
@@ -101,10 +101,10 @@ nav:
 
     - CS285:
       - Introduction For CS285: diy/CS285/index.md
-      - Supervised Learning of Behaviors: diy\CS285\Supervised Learning of Behaviors.md
-      - Introduction To Reinforcement Learning: diy\CS285\Introduction To Reinforcement Learning.md
-      - Policy Gradients: diy\CS285\Policy Gradients.md
-      - Actor-Critic Algorithms: diy\CS285\Actor-Critic Algorithms.md
+      - Supervised Learning of Behaviors: diy/CS285/Supervised Learning of Behaviors.md
+      - Introduction To Reinforcement Learning: diy/CS285/Introduction To Reinforcement Learning.md
+      - Policy Gradients: diy/CS285/Policy Gradients.md
+      - Actor-Critic Algorithms: diy/CS285/Actor-Critic Algorithms.md
             
     - Math notes: diy/Some MATH Notes.md
     
@@ -119,7 +119,7 @@ nav:
     - 一席: 
       # - About: Miscellaneous/Yixi/index.md
       - 激进的共识: Miscellaneous/Yixi/激进的共识.md
-      - 一次生活和无数次生活: Miscellaneous\Yixi\一次生活和无数次生活.md  
+      - 一次生活和无数次生活: Miscellaneous/Yixi/一次生活和无数次生活.md  
     
 
 copyright: Copyright &copy; 
