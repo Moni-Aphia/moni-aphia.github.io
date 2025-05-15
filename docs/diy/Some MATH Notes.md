@@ -1,6 +1,8 @@
 !!! success "Info"
     主要是记一些遇到的数学笔记！一般会给出参考（大部分以 wikipedia 和 公开课程 Notes 为主）
 
+    我很喜欢推理的过程，很多定理非常优雅地叙述了一些普世的认识，看着这些数学符号翩翩起舞的过程无疑是一件幸福的事情，因而在阅读文献、或学习的过程中，看到一些优美的定理或公式，在网上查找相关知识无疑是一件快乐的事情。
+
 ## 病态
 **Definition**：其性质被认为是非典型的或反直觉的现象。
 
@@ -205,4 +207,51 @@ $$
 $$
 \begin{Bmatrix}n \\ k\end{Bmatrix} = \frac{1}{k!} \sum_{i=0}^{k} (-1)^{i}\binom{k}{i}(k-i)^{n}
 $$
+
+## 容斥原理
+[lec03.pdf](https://jhc.sjtu.edu.cn/~kuanyang/teaching/CS0901/notes/lec03.pdf)
+!!!important "Theorem"
+
+    对于一组有限集合 $A_{1},A_{2},\dots,A_{n}$ ，容斥原理为：
+
+    $$
+    \begin{align}
+    \left\lvert  \bigcup_{i=1}^{n}A_{i} \right\rvert  &= \sum_{i=1}^{n} \lvert A_{i} \rvert -\sum_{i\leq j\leq n} \lvert A_{i}\cap A_{j} \rvert +\cdots-(-1)^{n}\left\lvert  \bigcap^{n}_{i=1}A_{i}  \right\rvert  \\
+    &=\sum_{k=1}^{n}(-1)^{k-1} \sum_{S \subseteq [n],\lvert S \rvert =k}\left\lvert  \bigcap_{i \in S}^{}A_{i}  \right\rvert    \\
+    &=\sum_{\emptyset\neq S \subseteq[n]}(-1)^{\lvert S \rvert -1} \left\lvert  \bigcap_{i \in S} A_{i} \right\rvert 
+    \end{align}  
+    $$
+
+    其中 $[n] =\{1,2,\dots,n\}$
+
+
+
+我们通过每个元素在等式两边的贡献（出现的次数）来证明这个原理：固定元素 $x$ ，假定 $I \subseteq[n]$ 为满足 $x\in A_{i}$ 的索引集合 $i$ 的集合，若 $I=\emptyset$ ，显然 $x$ 对两边的贡献均为零。如果 $I$ 是非空的，$x$ 在左侧的贡献为 $1$ ，在右侧，$x$ 出现在所有包含它的交集项中（比如说 $x$ 属于 $A_{1},A_{2}$ ，则它会被计入 $\lvert A_{1} \rvert,\lvert A_{2} \rvert,\lvert A_{1}\cap A_{2} \rvert$），利用如下等式
+
+$$
+\sum_{i=1}^{k} (-1)^{i-1}\binom{k}{i}=1
+$$
+
+也就是说尽管 $x$ 被被多次计数，但交替加减后净贡献为 $1$ ，与左侧的贡献一致
+
+在组合数学中，我们通常使用补集形式：将 $B_{1},B_{2},\dots,B_{n}$ 视为一组“坏事件”，而而目标是计算不包含任何坏事件的“好”元素的个数。
+
+!!!tip "Corollary"
+
+    对于有限全集 $U$ 的子集 $B_{1},B_{2},\dots ,B_{n}$ ，不属于其中任何子集的元素个数为：
+
+    $$
+    \sum_{S \subseteq [n]}(-1)^{\lvert S \rvert }\left\lvert  \bigcap_{i\in S} B_{i} \right\rvert  
+    $$
+
+    其中约定 $\cap_{i\in \emptyset}B_{i}=U$ 。
+
+
+该原则基于过度慷慨的包容，然后补偿性排斥。
+
+在一个非常抽象的环境中，容斥原理可以表示为某个矩阵的逆的计算。这个逆元具有特殊的结构，使该原理在组合学和数学相关领域中成为一种非常有价值的技术。
+
+> One of the most useful principles of enumeration in discrete probability and combinatorial theory is the celebrated principle of inclusion–exclusion. When skillfully applied, this principle has yielded the solution to many a combinatorial problem
+> 
+> ——Gian-Carlo Rota
 

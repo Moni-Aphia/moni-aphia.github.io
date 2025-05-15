@@ -2,6 +2,7 @@ site_name: YuXian Collection
 theme:
   favicon: img/favicon.ico
   name: material
+  custom_dir: overrides
   language: zh
   features:
     - content.code.annotate
