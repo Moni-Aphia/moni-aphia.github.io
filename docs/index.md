@@ -1,6 +1,6 @@
-
 ---
 readtime: false
+comments: true
 ---
 
 # Welcome to Moni Blog
@@ -26,9 +26,11 @@ readtime: false
 
 <center><font size = 5>无时无刻不/游荡在希望的/荒野</font></center>
 
+<br>
+
 !!! note inline "喜欢的东西"
     - 《攻壳机动队》
-    - fgo（~~[梵高](https://fgo.wiki/w/%E6%A2%B5%E9%AB%98)~~ 、~~[摩根](https://fgo.wiki/w/%E6%91%A9%E6%A0%B9)~~）
+    - fgo（喜欢 ~~[梵高](https://fgo.wiki/w/%E6%A2%B5%E9%AB%98)~~ 、~~[摩根](https://fgo.wiki/w/%E6%91%A9%E6%A0%B9)~~）
     - 学一些没有用的[东西](./diy/index.md)
     - 逛展（美术展）
 
