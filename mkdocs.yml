@@ -56,7 +56,8 @@ nav:
       - 自由振动: major/振动力学/自由振动.md
       - 单自由度振动: major/振动力学/单自由度振动.md
       - 多自由度振动: major/振动力学/多自由度振动.md
-      - 连续系统振动: major/振动力学/连续系统振动.md
+      - 连续系统振动 I: major/振动力学/连续系统振动 I.md
+      - 连续系统振动 II: major/振动力学/连续系统振动 II.md
       - 非线性振动: major/振动力学/非线性振动.md
     - 数理方法: major/数理方法/数理方法.md
     - 科学计算导论: major/科学计算导论/科学计算导论.md
@@ -106,6 +107,7 @@ nav:
       - Introduction To Reinforcement Learning: diy/CS285/Introduction To Reinforcement Learning.md
       - Policy Gradients: diy/CS285/Policy Gradients.md
       - Actor-Critic Algorithms: diy/CS285/Actor-Critic Algorithms.md
+      - Value Function Method: diy/CS285/Value Function Method.md
             
     - Math notes: diy/Some MATH Notes.md
     

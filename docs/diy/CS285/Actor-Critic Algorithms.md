@@ -5,7 +5,7 @@
 
 ## Policy Gradient 
 
-在 [[Policy Gradients]] 中引入了一个 $\hat{Q}$ 来描述在给定状态 $s_{t}$ 并且选择动作 $a_{t}$ 下未来情况的总和，也称为 "reward to go" ：
+在 [Policy Gradients](Policy%20Gradients.md) 中引入了一个 $\hat{Q}$ 来描述在给定状态 $s_{t}$ 并且选择动作 $a_{t}$ 下未来情况的总和，也称为 "reward to go" ：
 
 $$
 \hat{Q}_{i,t} = \left( \sum_{t'=1}^{T}r(s_{i,t'},a_{i,t'})  \right) 
