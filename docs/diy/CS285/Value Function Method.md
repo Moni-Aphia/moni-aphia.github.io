@@ -186,3 +186,44 @@ $$
 $$
 
 在这种情况下，那些几乎和最好的动作一样好的动作会被相当频繁地采取。这种方法称为 “Boltzman exploration” 在多数情况下比 epsilon greedy 更受欢迎。
+
+## Value Functions in Theory
+现在探讨 Value iteration 的收敛性：定义一个 Bellman 算子：
+
+$$
+\mathcal{B}V =  \max_{\mathbf{a}}r_{\mathbf{a}}+\gamma \mathcal{T}_{\mathbf{a}}V 
+$$
+
+其中 $r_{\mathbf{a}}$ 表示了当前动作 $\mathbf{a}$ 对应的奖励函数，$\mathcal{T}_{\mathbf{a}}$ 表示对于固定动作 $\mathbf{a}$ ，进行转移的线性算子，比如说马尔可夫转移矩阵： $\mathcal{T}_{\mathbf{a},i,j}=p(\mathbf{s}'=i|\mathbf{s}=j,\mathbf{a})$ 。实际上这个算子表示在当前状态下，对所有可能动作 $\mathbf{a}$ 做最优选择，选择使得即时奖励加上未来折扣价值最大的动作。他存在唯一不动点 $V^{*}$ 对应最优策略，可以证明，这个最优点存在且唯一，并且总是对应着我们的最优策略。
+
+我们采用这个算子更新值函数。现在的问题是如何证明这个算子最终会迭代到最优点，实际上，这个算子是一个[压缩映射](https://en.wikipedia.org/wiki/Contraction_mapping)，即满足：
+
+$$
+	\lVert \mathcal{B} V-\mathcal{B} \bar{V} \rVert _{\infty}\leq \gamma \lVert V-\bar{V} \rVert _{\infty}
+$$
+
+这里取无穷范数， $\gamma\in(0,1)$ 也就是说当我们用 Bellman 算子每做一次变化，其两两之间的距离只会越变越小。如上算如果我们取 $\bar{V} = V^{*}$ ，根据不动点性质有 $\mathcal{B}V^{*} =V^{*}$ ，此时：
+
+$$
+\lVert  \mathcal{B} V -V^{*} \rVert_{\infty}\leq \gamma \lVert V-V^{*} \rVert 
+$$
+
+也就说我们最终可以收敛到最优点。
+
+但是在 FVI 算法种，迭代过程实际上采用的是如下更新规则：
+
+$$
+V \leftarrow \Pi \mathcal{B}V 
+$$
+
+其中算子 $\Pi$ 满足： 
+
+$$
+\Pi :\Pi V =\arg \min_{V'\in\Omega} \frac{1}{2}\sum_{}^{}\lVert V'(\mathbf{s})  -V(\mathbf{s})\rVert^{2}
+$$
+
+$\Omega$ 是用例如神经网络等方法表示的价值函数。由于采用 Bellman 更新得到的价值函数并不一定在 $\Omega$ 种，算子实际上在做从价值函数到监督学习所构成的假设类的欧几里得投影。这也是一个压缩算子，也就是说我们额外做了一个压缩过程，直观感受是在欧几里得空间中有任意两点，并将他们投影到一条直线上时，他们的距离变得更近了。
+
+但是不幸的是 $\Pi$ 和 $\mathcal{B}$ 并不一定是一个压缩算子，他们是针对不同距离的压缩算子，比如说，Bellman 算子会让你接近最优点，但是此时压缩投影算法会使得你重新回到 $\Omega$ 空间中，一种极端情况是，压缩投影算法会使你离最优点越来越远。
+
+上面的分析也适用于对于 FQI 算法的分析，在 online Q iteration 算法中，第三步看起来很很像是一个梯度下降，他应当收敛到最优点，但实际上这并不是一个梯度下降，或者说不是朝着某个定义良好的损失啊含糊的梯度下降。这是因为我们利用第二步得到的目标值本身依赖于 $Q$ 值，因此，更新方向并不是某个真实损失函数关于 Q 的梯度。换句话说，我们并不是在优化一个稳定的目标，而是在拟合一个不断移动、依赖自身的目标函数。这种 bootstrap 的结构虽然高效，但也带来了不稳定性与难以分析的收敛性。当然可以通过某些技术将其转换成收敛的梯度下降，但随着带来的残差算法在实际效果非常糟糕。

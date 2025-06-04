@@ -47,8 +47,7 @@ nav:
 
   - 课程:
     - 目录: major/index.md
-    - 理论力学: major/理论力学/理论力学.md
-    - 材料力学: major/材料力学/材料力学.md
+    - 介绍: major/Comments.md
     - 弹性力学: major/弹性力学/弹性力学.md
     - 流体力学: major/流体力学/流体力学.md
     - 振动力学: 
@@ -59,12 +58,10 @@ nav:
       - 连续系统振动 I: major/振动力学/连续系统振动 I.md
       - 连续系统振动 II: major/振动力学/连续系统振动 II.md
       - 非线性振动: major/振动力学/非线性振动.md
-    - 数理方法: major/数理方法/数理方法.md
-    - 科学计算导论: major/科学计算导论/科学计算导论.md
-    - 计算方法: major/计算方法/计算方法.md
-    - 工程热力学: major/工程热力学/工程热力学.md
-    - 电工电子学及实验: major/电工电子学及实验/电工电子学及实验.md
-    - 智柔体力学概论: major/智柔体力学概论.md
+    - 有限元方法:
+      - Stiffness Method: major/有限元方法/stiffness Methods.md
+      - Truss Problem: major/有限元方法/Truss Problem.md
+      - Practical Consideration: major/有限元方法/Practical Consideration.md
     - 生物力学基础: 
       - 目录: major/生物力学基础/index.md
       - 绪论: major/生物力学基础/Intro.md

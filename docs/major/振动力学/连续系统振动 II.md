@@ -73,6 +73,7 @@ $$
 $$
 p_{1}= 9.867 \alpha \quad p_{2} = 39.48 \alpha \quad p_{3} = 88.83 \alpha
 $$
+
 要求更高阶的固有频率就得取更多分段的模型
 
 对于固支端、铰之或滑动支座端的情形，用集中质量法得到的固有频率值的误差于 $\frac{1}{N^{4}}$ 成正比， $N$ 为分段数，对于具有自由端的梁，误差则与 $\frac{1}{N^{2}}$ 成正比。
@@ -186,7 +187,8 @@ $$
 
 所以 
 
-$$\begin{align}
+$$
+\begin{align}
 &\int_{0}^{l}  \rho(x)X_{i}(x)X_{j}(x) \, {\rm d} x \\
 &= \int_{0}^{l} \rho(x)\mathbf{a}_{i}^{T}\Phi \Phi^{T}\mathbf{a}_{i} \, {\rm d} x \\
 &=\mathbf{a}_{i}^{T} \int_{0}^{l} \rho(x)\Phi \Phi^{T} \, {\rm d} x \ \mathbf{a}_{i}  \\
@@ -363,6 +365,7 @@ $$
 显然取狄拉克函数 $\delta(x-x_{i})$ 可为权函数。
 
 - 子区域法：我们划分 $n$ 个区域 $[l_{i-1},l_{i}]$ ，令残数在各个子区域的积分为零，即
+
 $$
 \int_{l_{i-1}}^{l_{i}}R\left[ \sum_{j=1}^{n} \alpha_{j}\overset{ \sim }{ \varphi }_{j}(x) ,x\right]   \, {\rm d} x =0
 $$

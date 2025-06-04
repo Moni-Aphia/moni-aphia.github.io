@@ -56,7 +56,7 @@ $$
 \max \mathbb{E}_{o_{t}\sim p_{\text{data}}(o_{t})}[\log \pi_{\theta}(a_{t}|o_{t})]
 $$
 
-我们在 $p_{\pi_{\theta}}(o_{t})$ 下测试我们的策略，因为 $p_{\text{data}}(o_{t}\neq)p_{\pi_{\theta}}(o_{t})$ 所以策略输出的动作会有所不同，这种行为称为[分布偏移](https://zh-v2.d2l.ai/chapter_multilayer-perceptrons/environment.html) 
+我们在 $p_{\pi_{\theta}}(o_{t})$ 下测试我们的策略，因为 $p_{\text{data}}(o_{t})\neq p_{\pi_{\theta}}(o_{t})$ 所以策略输出的动作会有所不同，这种行为称为[分布偏移](https://zh-v2.d2l.ai/chapter_multilayer-perceptrons/environment.html) 
 
 我们定义成本(cost)函数来衡量性能优劣
 
