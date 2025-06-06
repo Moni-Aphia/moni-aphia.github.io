@@ -59,9 +59,16 @@ nav:
       - 连续系统振动 II: major/振动力学/连续系统振动 II.md
       - 非线性振动: major/振动力学/非线性振动.md
     - 有限元方法:
+      - Introduction For FEM: major/有限元方法/Introduction For FEM.md
       - Stiffness Method: major/有限元方法/stiffness Methods.md
-      - Truss Problem: major/有限元方法/Truss Problem.md
+      - Bar Beam and Plate: major/有限元方法/Bar Beam Plate.md
+      - Plane Problem Axisymmetric: major/有限元方法/Plane Problem Axisymmetric.md
+      - Numerical Analysis: major/有限元方法/Numerical Analysis.md
       - Practical Consideration: major/有限元方法/Practical Consideration.md
+      - Nonlinearity: major/有限元方法/Nonlinearity.md
+      # - Heat Problem: major/有限元方法/Heat Problem.md
+      # - Vibration: major/有限元方法/Vibration.md
+      # - Weighted Residual Method: major/有限元方法/Weighted Residual Method.md
     - 生物力学基础: 
       - 目录: major/生物力学基础/index.md
       - 绪论: major/生物力学基础/Intro.md
@@ -71,6 +78,7 @@ nav:
     - 计算流体力学:
       - 计算流体力学: major/CFD/index.md
     #- 清代文化史: Liber/清代文化史.md
+    - 社交网络安全与隐私: major/社交网络安全与隐私.md
   - 自学:
     - 目录: diy/index.md
     - 24暑假课程总结: diy/暑假课程记录.md
@@ -193,7 +201,7 @@ markdown_extensions:
   - pymdownx.highlight: # 代码块高亮
       anchor_linenums: true
       linenums: true # 显示行号
-      # auto_title: true # 显示编程语言名称
+      auto_title: true # 显示编程语言名称
   - pymdownx.emoji:
       emoji_index: !!python/name:material.extensions.emoji.twemoji
       emoji_generator: !!python/name:material.extensions.emoji.to_svg
