@@ -66,9 +66,9 @@ nav:
       - Numerical Analysis: major/有限元方法/Numerical Analysis.md
       - Practical Consideration: major/有限元方法/Practical Consideration.md
       - Nonlinearity: major/有限元方法/Nonlinearity.md
-      # - Heat Problem: major/有限元方法/Heat Problem.md
-      # - Vibration: major/有限元方法/Vibration.md
-      # - Weighted Residual Method: major/有限元方法/Weighted Residual Method.md
+      - Heat Problem: major/有限元方法/Heat Problem.md
+      - Vibration: major/有限元方法/Vibration.md
+      - Weighted Residual Method: major/有限元方法/Weighted Residual Methods.md
     - 生物力学基础: 
       - 目录: major/生物力学基础/index.md
       - 绪论: major/生物力学基础/Intro.md

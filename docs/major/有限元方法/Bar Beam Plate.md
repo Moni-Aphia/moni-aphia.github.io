@@ -845,10 +845,12 @@ $$
 L & 0  & -L & L^{2}
 \end{bmatrix}\begin{Bmatrix}
 v_{i} \\ 
+\theta_{i} \\
 v_{j}\\
 \theta_{j} \\
 \end{Bmatrix} =\begin{Bmatrix}
 F_{iy} \\
+M_{i} \\
 F_{jy} \\ 
 M_{j} \\
 \end{Bmatrix}
@@ -1184,7 +1186,9 @@ M_{xy}
 \kappa_{xy}
 \end{Bmatrix} = [D][B]\left\{ d \right\} 
 $$
+
 其中 $[D]$ 是本构矩阵，对于各向同性材料，满足：
+
 $$
 [D] = \frac{Et^{3}}{12(1-\nu^{2})}\begin{bmatrix}
 1 & \nu & 0   \\

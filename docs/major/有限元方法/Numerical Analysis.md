@@ -157,6 +157,62 @@ $h$ 是当我们考虑到元素的厚度。
 !!! info 
     Jacbian 行列式 $\det(\mathbf{J})$ 是衡量单元质量的关键
 
+??? example
+
+    ![alt text](<Source/Pasted image 20250607154951.png>)
+
+    先求位移插值函数：
+
+    $$
+    \begin{align}
+    x &= \sum N_{i}x_{i} = \frac{1}{4}(1+s)(13+3t) \\
+    y &= \sum N_{i}y_{i} = 2(1+t)  
+    \end{align}
+    $$
+
+    然后可求得 Jacbian 矩阵：
+
+    $$
+    J = \begin{bmatrix}
+    \frac{\partial x }{\partial s }  & \frac{\partial y }{\partial s } \\
+    \frac{\partial x }{\partial t }  & \frac{\partial y }{\partial t }  
+    \end{bmatrix}= \begin{bmatrix}
+    \frac{13}{4}+\frac{3}{4}t & 0 \\
+    \frac{3}{4}(1+s) & 2
+    \end{bmatrix}
+    $$
+
+    求取 $\frac{\partial N_{1} }{\partial x }$ 和 $\frac{\partial N_{2} }{\partial  y}$ ，先求表达式：
+
+    $$
+    \begin{align}
+    &\begin{Bmatrix}
+    \frac{\partial N_{i} }{\partial x }  \\
+    \frac{\partial N_{i} }{\partial y }  
+    \end{Bmatrix}= \frac{1}{\lvert J \rvert } \begin{Bmatrix}
+    \frac{\partial y }{\partial t } \frac{\partial N_{i}  }{\partial s } -\frac{\partial y }{\partial s } \frac{\partial N_{i} }{\partial t } \\
+    -\frac{\partial x  }{\partial t }\frac{\partial N_{i} }{\partial s }+\frac{\partial x }{\partial s } \frac{\partial N_{i} }{\partial t }    
+    \end{Bmatrix}= \frac{2}{13+3t}\begin{Bmatrix}
+    2\frac{\partial N_{i} }{\partial s } \\
+    -\frac{3(1+s)}{4}\frac{\partial N_{i} }{\partial s } +\frac{(13+3t)}{4}\frac{\partial N_{i} }{\partial t }  
+    \end{Bmatrix} \\
+    \implies& \frac{\partial N_{1} }{\partial x }  = \frac{t-1}{13+3t} \\
+    & \frac{\partial N_{2} }{\partial y }   = \frac{2}{13+3t}\left[ -\frac{3(1+s)}{4}\frac{(1-t)}{4} -\frac{(13+4t)}{4}\frac{(1+s)}{4}\right] 
+    \end{align}
+    $$
+
+    现在求取 $s$ 和 $t$ 的值，将 $x=1.5,y=2$ 带入位移插值函数中，可得：
+
+    $$
+    s = - \frac{7}{13} \quad t =0
+    $$
+
+    因此可以求得：
+
+    $$
+    \frac{\partial N_{1} }{\partial x }  = -\frac{1}{13}\quad \frac{\partial N_{2} }{\partial y }  = - \frac{12}{169}
+    $$
+
 
 
 
