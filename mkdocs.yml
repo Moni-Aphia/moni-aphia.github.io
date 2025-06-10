@@ -59,6 +59,7 @@ nav:
       - 连续系统振动 II: major/振动力学/连续系统振动 II.md
       - 非线性振动: major/振动力学/非线性振动.md
     - 有限元方法:
+      - 有限元方法: major/有限元方法/index.md
       - Introduction For FEM: major/有限元方法/Introduction For FEM.md
       - Stiffness Method: major/有限元方法/stiffness Methods.md
       - Bar Beam and Plate: major/有限元方法/Bar Beam Plate.md
@@ -83,6 +84,8 @@ nav:
       - 决策树: major/数据建模与分析/决策树.md
       - Logistic 回归和最大熵模型: major/数据建模与分析/Logistic 回归和最大熵模型.md
       - SVM: major/数据建模与分析/SVM.md
+      - Adaboost: major/数据建模与分析/Adaboost.md
+      - EM 算法: major/数据建模与分析/EM 算法.md
     - 计算流体力学:
       - 计算流体力学: major/CFD/index.md
     #- 清代文化史: Liber/清代文化史.md

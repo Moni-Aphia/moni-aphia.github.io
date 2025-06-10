@@ -406,8 +406,7 @@ $$
     u_{2}  \\
     u_{3} \\
     u_{3}
-    \end{Bmatrix}
-    =
+    \end{Bmatrix}=
     \begin{Bmatrix}
     P \\
     F_{3X} \\
