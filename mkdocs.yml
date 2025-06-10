@@ -75,6 +75,14 @@ nav:
       - 热力学基础: major/生物力学基础/therm.md
       - 统计力学: major/生物力学基础/statmech.md
       - 统计力学应用: major/生物力学基础/statmech II.md
+    - 数据建模与分析:
+      - 目录: major/数据建模与分析/index.md
+      - 感知机: major/数据建模与分析/感知机.md
+      - k-近邻算法: major/数据建模与分析/k-近邻算法.md
+      - 朴素贝叶斯: major/数据建模与分析/朴素贝叶斯.md
+      - 决策树: major/数据建模与分析/决策树.md
+      - Logistic 回归和最大熵模型: major/数据建模与分析/Logistic 回归和最大熵模型.md
+      - SVM: major/数据建模与分析/SVM.md
     - 计算流体力学:
       - 计算流体力学: major/CFD/index.md
     #- 清代文化史: Liber/清代文化史.md
