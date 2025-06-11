@@ -86,6 +86,9 @@ nav:
       - SVM: major/数据建模与分析/SVM.md
       - Adaboost: major/数据建模与分析/Adaboost.md
       - EM 算法: major/数据建模与分析/EM 算法.md
+      - 聚类方法: major/数据建模与分析/聚类方法.md
+      - 奇异值分解: major/数据建模与分析/奇异值分解.md
+      - 主成分分析: major/数据建模与分析/主成分分析.md
     - 计算流体力学:
       - 计算流体力学: major/CFD/index.md
     #- 清代文化史: Liber/清代文化史.md
