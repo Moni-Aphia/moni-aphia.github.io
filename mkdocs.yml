@@ -72,10 +72,10 @@ nav:
       - Weighted Residual Method: major/有限元方法/Weighted Residual Methods.md
     - 生物力学基础: 
       - 目录: major/生物力学基础/index.md
-      - 绪论: major/生物力学基础/Intro.md
-      - 热力学基础: major/生物力学基础/therm.md
-      - 统计力学: major/生物力学基础/statmech.md
-      - 统计力学应用: major/生物力学基础/statmech II.md
+      #- 绪论: major/生物力学基础/Intro.md
+      #- 热力学基础: major/生物力学基础/therm.md
+      #- 统计力学: major/生物力学基础/statmech.md
+      #- 统计力学应用: major/生物力学基础/statmech II.md
     - 数据建模与分析:
       - 目录: major/数据建模与分析/index.md
       - 感知机: major/数据建模与分析/感知机.md
