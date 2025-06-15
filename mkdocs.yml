@@ -118,8 +118,8 @@ nav:
       - Attention: diy/EECS498/Attention.md
       # - Vision Transformers: diy/EECS498/Vision Transformers.md
       
-    # - CS198:
-    #   - Introduction For CS198: diy/CS198/CS198.md
+    - CS198:
+      - Introduction For CS198: diy/CS198/index.md
 
     - CS285:
       - Introduction For CS285: diy/CS285/index.md
@@ -127,8 +127,11 @@ nav:
       - Introduction To Reinforcement Learning: diy/CS285/Introduction To Reinforcement Learning.md
       - Policy Gradients: diy/CS285/Policy Gradients.md
       - Actor-Critic Algorithms: diy/CS285/Actor-Critic Algorithms.md
-      - Value Function Method: diy/CS285/Value Function Method.md
-            
+      - Value Function Methods: diy/CS285/Value Function Method.md
+      - Deep RL with Q-Functions: diy/CS285/Deep RL with Q-Functions.md
+      - Advanced Policy Gradients: diy/CS285/Advanced Policy Gradients.md
+      - Optimal Control and Planning: diy/CS285/Optimal Control and Planning.md
+        
     - Math notes: diy/Some MATH Notes.md
     
   - Miscellaneous : 

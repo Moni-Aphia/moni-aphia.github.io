@@ -8,3 +8,10 @@
 
 碎碎念：大作业没有限制软件，但基本我和另一组同学用的是 COMSOL 而剩下大部分用的是Fluent。虽然最后说大作业的成绩只会差一两分，但是据我观察用Fluent的基本上都是95起步，我和另一组分数会偏低一点，虽然我不太敢说分数差距是因为软件，但是大家成果都差不多，而且有些人的成果感觉怪怪的，（如果冒犯到了只能在此抱歉），所以做大作业的最好还是用fluent，不要用COMSOL（胡老师说这就是一个玩具）。
 
+贴一个[复习整理](./pdfsrc/CFD复习整理.pdf)：
+
+
+
+<iframe src="pdfsrc/CFD复习整理.pdf" width="100%" height="600px" style="border: none;">
+This browser does not support PDFs
+</iframe>

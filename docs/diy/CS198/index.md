@@ -17,4 +17,6 @@
 
 Spring 和 fall 是不同的老师来上，内容侧重点好像也有所不同（据说 fa 会比较难），Sp的老师会把资料开源，听过Sp老师的video,这个老师上课基本是把Notes内容写一遍，但是感觉上课很催眠（因为老师讲课特别慢）
 
+过了一遍，内容很基础，跟李航的《统计学习方法》内容差不多，但是比较浅显，作业还是不错的。
+
 课程资源 ：[CS 189/289A: Introduction to Machine Learning (berkeley.edu)](https://people.eecs.berkeley.edu/~jrs/189s23/) 
