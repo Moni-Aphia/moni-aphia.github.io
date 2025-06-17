@@ -131,7 +131,7 @@ nav:
       - Deep RL with Q-Functions: diy/CS285/Deep RL with Q-Functions.md
       - Advanced Policy Gradients: diy/CS285/Advanced Policy Gradients.md
       - Optimal Control and Planning: diy/CS285/Optimal Control and Planning.md
-        
+      - Model-Based Reinforcement Learning: diy/CS285/Model-Based Reinforcement Learning.md
     - Math notes: diy/Some MATH Notes.md
     
   - Miscellaneous : 
