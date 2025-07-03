@@ -346,3 +346,159 @@ $$
 g(\theta_{t})-f(\theta_{* }) \leq L\lVert \theta_{0}-\theta_{* } \rVert ^{2}\left( 1-\sqrt{ {\mu} /L } \right)^{t}
 $$
 
+### Projected gradient descent 
+
+投影梯度法（Projected gradient descent）用于求解如下问题：
+
+$$
+\min_{\theta \in \mathcal{K} }f(\theta)
+$$
+
+其中 $f$ 为 $\mathbb{R}^{n}$ 的凸函数，$\mathcal{K}$ 是闭凸集。当最优解位于可行域边界时（如稀疏解、物理约束），无约束优化可能得到不可行解。PGD 通过投影将搜索限制在 $\mathcal{K}$ 内。算法的迭代公式的构建分为两步：
+
+- 梯度步的局部二次近似：
+
+$$
+\theta_{t+1} = \arg \min_{\theta \in \mathcal{K} } \left[ f(\theta_{t})+(\theta-\theta_{t})^{T} \nabla f(\theta_{t})+\frac{L}{2}\lVert \theta-\theta_{t} \rVert^{2}_{2}  \right] 
+$$
+
+在 $\theta_{t}$ 附近用二次函数逼近 $f(\theta)$ ，约束 $\theta\in \mathcal{K}$ 
+
+- 投影操作：
+
+$$
+\theta_{t+1} = \arg \min_{\theta \in \mathcal{K} } \frac{1}{2}\left\lVert  \theta -\left( \theta_{t}-\frac{1}{L}\nabla f(\theta_{t}) \right)  \right\rVert _{2}^{2}
+$$
+
+先做梯度下降，然后将结果投影回可行域 $\mathcal{K}$ ，确保每次迭代得到的点都落在可行域中。
+
+PGD 的收敛速率和光滑优化方法的收敛速率相同 
+
+
+### Newton Method 
+
+牛顿法起源于寻找单变量函数的零点问题，对于二阶连续可微函数 $g$ 和点 $\theta_{t-1}$ ，二阶泰勒展开给出：
+
+$$
+\tilde{g}(\theta) = g(\theta_{t-1})+g'(\theta_{t-1})^{T}(\theta-\theta_{t-1}) + \frac{1}{2}(\theta-\theta_{t-1})^{T}g''(\theta_{t-1})^{T}(\theta-\theta_{t-1})
+$$
+
+选择二次函数 $g$ 的极小点作为 $\theta_{t}$ ，即
+
+$$
+g'(\theta_{t}) = g'(\theta_{t-1}) + g''(\theta_{t-1})(\theta_{t}-\theta_{t-1}) = 0
+$$
+
+从上式中可以得到牛顿法的迭代形式为：
+
+$$
+\theta_{t} = \theta_{t-1}-(g''(\theta_{t-1}))^{-1}g'(\theta_{t-1})
+$$
+
+在严格牛顿极小点的一个邻域内，牛顿法的收敛速度是非常快的。对于比较小的 $\lVert \theta_{t-1}-\theta_{*} \rVert$ ，牛顿法以平方速率收敛：
+
+$$
+C\lVert \theta_{t}-\theta_{*} \rVert \leq (C\lVert \theta_{t-1}-\theta_{*} \rVert)^{2}
+$$
+
+$C$ 为可求的常数。
+
+但是牛顿法有一些严重的缺点：
+
+- 要求可逆的 Hessian 矩阵
+- 牛顿法很有可能会发散
+- 牛顿计算开销比较大 $\mathcal{O}(d^{3})$ 
+
+### Subgradient
+
+考虑函数 $g$ 满足凸函数且在 $\left\{ \lVert \theta \rVert_{2} \leq \theta \right\}$ 上满足 $B$ Lipschitz连续，则次梯度的迭代算法为：
+
+$$
+\theta_{t} = \Pi_{D}\left( \theta_{t-1}-\frac{2D}{B\sqrt{ t }}g'(\theta_{t-1}) \right) 
+$$
+
+其中 $\Pi_{D}$ 是 $\left\{ \lVert \theta \rVert_{2}\leq D \right\}$ 中的正交投影。算法上界满足：
+
+$$
+g\left( \frac{1}{t}\sum_{k=0}^{t-1} \theta_{k} \right) -g(\theta_{*}) \leq \frac{2DB}{\sqrt{ t }}
+$$
+
+证明如下，记 $\gamma_{t}= \frac{2D}{B\sqrt{ t }}$ 根据迭代算法，利用投影的压缩性有：
+
+$$
+\begin{align}
+\lVert \theta_{t}-\theta_{{*}} \rVert_{2}^{2}\leq \lVert \theta_{t-1}-\theta_{* }-\gamma_{t}g'(\theta_{t-1})  \rVert^{2}_{2}  
+\end{align}
+$$
+
+再利用 $\lVert g'(\theta_{t-1}) \rVert_{2}\leq B$ ，将右边第二项展开得：
+
+$$
+\lVert \theta_{t}-\theta_{{*}} \rVert_{2}^{2}\leq \lVert \theta_{t-1}-\theta_{* }  \rVert^{2}_{2} +B^{2}\gamma_{t}^{2}-2\gamma_{t}(\theta_{t-1}-\theta_{* }) ^{T}g'(\theta_{t-1})
+$$
+
+利用次梯度的特性有：
+
+$$
+\lVert \theta_{t}-\theta_{{*}} \rVert_{2}^{2}\leq \lVert \theta_{t-1}-\theta_{* }  \rVert^{2}_{2} +B^{2}\gamma_{t}^{2}-2\gamma_{t}[g(\theta_{t-1})-g(\theta_{*})]
+$$
+
+根据上面的结果可以得到：
+
+$$
+g(\theta_{t-1})-g(\theta_{* }) \leq \frac{B^{2}\gamma_{t}}{2}+ \frac{1}{2\gamma_{t}}\left[ \lVert \theta_{t-1}-\theta_{* } \rVert ^{2}_{2}-\lVert \theta_{t}-\theta _{* } \rVert ^{2}_{2} \right] 
+$$
+
+假定我们选择恒定的步长 $\gamma_{t}=\gamma$ ，累加迭代结果可以得到：
+
+$$
+\begin{align}
+\sum_{u=1}^{t} [g(\theta_{u-1})-g(\theta_{*})] &\leq \sum_{u=1}^{t} \frac{B^{2}\gamma}{2}+\sum_{u=1}^{t}  \frac{1}{ 2\gamma}[\lVert \theta_{u-1}-\theta_{* } \rVert^{2}_{2}-\lVert \theta_{u}-\theta_{* } \rVert_{2}^{2}  ] \\
+&\leq \frac{tB^{2}\gamma}{2} + \frac{1}{2\gamma}\lVert \theta_{0} -\theta_{* }\rVert^{2}_{2}\leq t\frac{B^{2}\gamma}{2}+ \frac{2}{\gamma}D^{2} 
+\end{align}
+$$
+
+根据恒定的步长得到启发，选择 $\gamma_t =\frac{2D}{B\sqrt{ t }}$ 时，上界为 $2DB \sqrt{ t }$，利用Jensen不等式可得：
+
+$$
+g\left( \frac{1}{t}\sum_{k=0}^{t-1} \theta_{k} \right)-g(\theta_{{*}})\leq \frac{2DB}{\sqrt{ t }}
+$$
+
+如果选择衰减的步长的话，收敛上界为：
+
+$$
+g\left( \frac{1}{t}\sum_{k=0}^{t-1} \theta_{k} \right)-g(\theta_{{*}})\leq \frac{3DB}{\sqrt{ t }}
+$$
+
+如果考虑 $\mu$-强凸的话收敛上界为：
+
+$$
+g\left( \frac{2}{t(t+1)}\sum_{k=1}^{t} k\theta_{k-1} \right) -g(\theta_{*}) \leq \frac{2B^{2}}{\mu(t+1)}
+$$
+
+假定机器学习中，分类器 $\theta(x) =\theta^{T}\Phi(x)$ ，其中 $\lVert \Phi(x) \rVert_{2}\leq R$ 经验风险 $\hat{f}(\theta) = \frac{1}{n}\sum_{i=1}^{n}\mathscr{l }(y_{i},\Phi(x_{i})^{T}\theta)$ ，经验风险和期望风险在 $\Theta = \left\{ \lVert \theta \rVert_{2} \leq D\right\}$ 上满足$GR$-Lipschitz 连续。次梯度算法给出：
+- 高于 $1-\delta$ 的概率有：
+
+$$
+\sup_{\theta \in\Theta} \lvert \hat{f}(\theta)-f(\theta) \rvert \leq \frac{GRD}{\sqrt{ n }}\left[ 2+\sqrt{ 2\log \frac{2}{\delta} } \right] 
+$$
+
+- 经过 $t$ 次算法迭代后：
+
+$$
+\hat{f}(\theta) -\min_{\eta \in\Theta} \hat{f}(\theta)\leq \frac{GRD}{\sqrt{ t }}
+$$
+
+### Summary 
+
+- $D$ ：可行域直径
+- $B$ ：Lipschitz常数（关于最优解的常数）
+- $L$ ：光滑常数 
+- $\mu$ ：强凸常数
+
+
+|           | convex           | strongly convex           |
+| --------- | ---------------- | ------------------------- |
+| nonsmooth | $BD /\sqrt{ t }$ | $B^{2} / t \mu$           |
+| smooth    | $LD^{2} /t^{2}$  | $\exp(-t\sqrt{ \mu /L })$ |
+| quadratic | $LD^{2} /t^{2}$  | $\exp(-t\sqrt{ \mu /L })$ |

@@ -95,6 +95,9 @@ nav:
       - 计算流体力学: major/CFD/index.md
     #- 清代文化史: Liber/清代文化史.md
     - 社交网络安全与隐私: major/社交网络安全与隐私.md
+    - HPC:
+      - 目录: major/HPC/index.md
+      - Hidden World Beneath Your Code: major/HPC/Hidden World Beneath Your Code.md
   - 自学:
     - 目录: diy/index.md
     - 24暑假课程总结: diy/暑假课程记录.md
