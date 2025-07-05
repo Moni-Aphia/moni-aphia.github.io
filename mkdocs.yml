@@ -98,6 +98,8 @@ nav:
     - HPC:
       - 目录: major/HPC/index.md
       - Hidden World Beneath Your Code: major/HPC/Hidden World Beneath Your Code.md
+      - 向量化基础: major/HPC/Vectorization.md
+      - OpenMP & MPI: major/HPC/OpenMP&MPI.md
   - 自学:
     - 目录: diy/index.md
     - 24暑假课程总结: diy/暑假课程记录.md
