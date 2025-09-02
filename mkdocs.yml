@@ -48,7 +48,9 @@ nav:
   - 课程:
     - 目录: major/index.md
     - 介绍: major/Comments.md
-    - 弹性力学: major/弹性力学/弹性力学.md
+    - 弹性力学: 
+      - 弹性力学: major/弹性力学/index.md
+      - 应力应变理论: major/弹性力学/应力应变理论.md
     - 流体力学: major/流体力学/流体力学.md
     - 振动力学: 
       - 振动力学: major/振动力学/index.md
@@ -100,6 +102,7 @@ nav:
       - Hidden World Beneath Your Code: major/HPC/Hidden World Beneath Your Code.md
       - 向量化基础: major/HPC/Vectorization.md
       - OpenMP & MPI: major/HPC/OpenMP&MPI.md
+      - C++ 并行设计: major/HPC/C++.md
   - 自学:
     - 目录: diy/index.md
     - 24暑假课程总结: diy/暑假课程记录.md
@@ -128,6 +131,7 @@ nav:
       - Introduction For CS198: diy/CS198/index.md
 
     - CS285:
+      - Before CS258: diy/CS285/Before CS258.md     
       - Introduction For CS285: diy/CS285/index.md
       - Supervised Learning of Behaviors: diy/CS285/Supervised Learning of Behaviors.md
       - Introduction To Reinforcement Learning: diy/CS285/Introduction To Reinforcement Learning.md
