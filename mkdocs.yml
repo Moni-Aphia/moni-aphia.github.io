@@ -142,6 +142,12 @@ nav:
       - Advanced Policy Gradients: diy/CS285/Advanced Policy Gradients.md
       - Optimal Control and Planning: diy/CS285/Optimal Control and Planning.md
       - Model-Based Reinforcement Learning: diy/CS285/Model-Based Reinforcement Learning.md
+      - Model-Based Policy Learning: diy/CS285/Model-Based Policy Learning.md
+      - Exploration I: diy/CS285/Exploration I.md 
+      - Exploration II: diy/CS285/Exploration II.md 
+
+
+
     - Math notes: diy/Some MATH Notes.md
     
   - Miscellaneous : 
