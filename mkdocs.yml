@@ -145,6 +145,7 @@ nav:
       - Model-Based Policy Learning: diy/CS285/Model-Based Policy Learning.md
       - Exploration I: diy/CS285/Exploration I.md 
       - Exploration II: diy/CS285/Exploration II.md 
+      - Offline Reinforcement Learning: diy/CS285/Offline Reinforcement Learning.md
 
 
 
@@ -157,6 +158,7 @@ nav:
       - Data-Driven Identification of Parametric Partial Differential Equations: Miscellaneous/Paper/Data-Driven Identification of Parametric Partial Differential Equations.md
       - An intelligent spinal soft robot with self-sensing adaptability: Miscellaneous/Paper/An intelligent spinal soft robot with self-sensing adaptability.md
       - Stochastic First-And zeroth-Order Methods For Nonconvex Stochastic Programming: Miscellaneous/Paper/Stochastic First-And zeroth-Order Methods For Nonconvex Stochastic Programming.md
+      - Review of Active Vibration Isolation Strategies: Miscellaneous/Paper/Review of Active Vibration Isolation Strategies.md
     #- 读书笔记: 
     - 一席: 
       # - About: Miscellaneous/Yixi/index.md

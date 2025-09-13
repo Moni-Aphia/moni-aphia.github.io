@@ -4,6 +4,9 @@
     一些杂七杂八的记录
 ## 文章
 
+- 主动隔振
+    - [Review of Active Vibration Isolation Strategies](./Paper/Review%20of%20Active%20Vibration%20Isolation%20Strategies.md)
+
 - 数据驱动方法识别动力学系统
 
     - [数据驱动综述](./Paper/A%20Review%20of%20Data-Driven%20Discovery%20for%20Dynamics%20Equation.md)
