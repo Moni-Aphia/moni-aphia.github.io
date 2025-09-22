@@ -111,3 +111,10 @@
   height: 70px;
   font-size: 14px;
 } */
+
+/* 让文章内容区域的所有表格宽度都为 100% */
+.md-typeset__table table {
+  width: 100% !important; /* 使用 !important 来确保覆盖主题默认样式 */
+  display: table; /* 确保 display 属性正确 */
+  table-layout: fixed; /* 让列宽更均匀，可以根据内容调整为 auto */
+}

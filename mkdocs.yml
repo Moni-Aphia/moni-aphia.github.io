@@ -146,7 +146,9 @@ nav:
       - Exploration I: diy/CS285/Exploration I.md 
       - Exploration II: diy/CS285/Exploration II.md 
       - Offline Reinforcement Learning: diy/CS285/Offline Reinforcement Learning.md
-
+    - Control:
+      - 目录: diy/Control/index.md
+      - Linear System: diy/Control/Linear System.md
 
 
     - Math notes: diy/Some MATH Notes.md
@@ -166,6 +168,7 @@ nav:
       - 一次生活和无数次生活: Miscellaneous/Yixi/一次生活和无数次生活.md  
     - 项目记录:
       - 信号分析: Miscellaneous/Records/Data Analysis.md
+
     
 
 copyright: Copyright &copy; 
