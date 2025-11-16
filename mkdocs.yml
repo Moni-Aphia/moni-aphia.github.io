@@ -103,6 +103,7 @@ nav:
       - 向量化基础: major/HPC/Vectorization.md
       - OpenMP & MPI: major/HPC/OpenMP&MPI.md
       - C++ 并行设计: major/HPC/C++.md
+    - 连续介质力学 I: major/Continumm Mechanics I.md
   - 自学:
     - 目录: diy/index.md
     - 24暑假课程总结: diy/暑假课程记录.md
@@ -150,9 +151,9 @@ nav:
       - 目录: diy/Control/index.md
       - Linear System: diy/Control/Linear System.md
 
-
     - Math notes: diy/Some MATH Notes.md
-    
+    - 好文推荐: diy/recommend.md
+
   - Miscellaneous : 
     - 目录: Miscellaneous/index.md
     - Paper: 
