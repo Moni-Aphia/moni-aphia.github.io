@@ -1,0 +1,4977 @@
+
+<!doctype html>
+<html lang="zh" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      
+        <link rel="prev" href="HPC/C%2B%2B.html">
+      
+      
+        <link rel="next" href="../diy/index.html">
+      
+      
+        
+      
+      
+      <link rel="icon" href="../img/favicon.ico">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.0">
+    
+    
+      
+        <title>连续介质力学 I - YuXian Collection</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/main.618322db.min.css">
+      
+        
+        <link rel="stylesheet" href="../assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+        <script src="https://unpkg.com/iframe-worker/shim"></script>
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../stylesheets/extra.css">
+    
+      <link rel="stylesheet" href="../stylesheets/link.css">
+    
+      <link rel="stylesheet" href="../stylesheets/customize.css">
+    
+      <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@latest/dist/gitalk.css">
+    
+      <link rel="stylesheet" href="https://cdn.staticfile.org/font-awesome/4.7.0/css/font-awesome.css">
+    
+      <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/lxgw-wenkai-webfont@1.1.0/style.css">
+    
+    <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="cyan" data-md-color-accent="indigo">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#tensor" class="md-skip">
+          跳转至
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="页眉">
+    <a href=".." title="YuXian Collection" class="md-header__button md-logo" aria-label="YuXian Collection" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            YuXian Collection
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              连续介质力学 I
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="default" data-md-color-primary="cyan" data-md-color-accent="indigo"  aria-label="切换至夜间模式"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="切换至夜间模式" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M17 7H7a5 5 0 0 0-5 5 5 5 0 0 0 5 5h10a5 5 0 0 0 5-5 5 5 0 0 0-5-5m0 8a3 3 0 0 1-3-3 3 3 0 0 1 3-3 3 3 0 0 1 3 3 3 3 0 0 1-3 3"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="black" data-md-color-accent="indigo"  aria-label="切换至日间模式"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="切换至日间模式" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M17 6H7c-3.31 0-6 2.69-6 6s2.69 6 6 6h10c3.31 0 6-2.69 6-6s-2.69-6-6-6m0 10H7c-2.21 0-4-1.79-4-4s1.79-4 4-4h10c2.21 0 4 1.79 4 4s-1.79 4-4 4M7 9c-1.66 0-3 1.34-3 3s1.34 3 3 3 3-1.34 3-3-1.34-3-3-3"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="搜索" placeholder="搜索" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="查找">
+        
+          <a href="javascript:void(0)" class="md-search__icon md-icon" title="分享" aria-label="分享" data-clipboard data-clipboard-text="" data-md-component="search-share" tabindex="-1">
+            
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M18 16.08c-.76 0-1.44.3-1.96.77L8.91 12.7c.05-.23.09-.46.09-.7s-.04-.47-.09-.7l7.05-4.11c.54.5 1.25.81 2.04.81a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3c0 .24.04.47.09.7L8.04 9.81C7.5 9.31 6.79 9 6 9a3 3 0 0 0-3 3 3 3 0 0 0 3 3c.79 0 1.5-.31 2.04-.81l7.12 4.15c-.05.21-.08.43-.08.66 0 1.61 1.31 2.91 2.92 2.91s2.92-1.3 2.92-2.91A2.92 2.92 0 0 0 18 16.08"/></svg>
+          </a>
+        
+        <button type="reset" class="md-search__icon md-icon" title="清空当前内容" aria-label="清空当前内容" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            正在初始化搜索引擎
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="标签" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../index.html" class="md-tabs__link">
+          
+  
+  
+    
+  
+  Home
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+  
+  
+    
+    
+      <li class="md-tabs__item md-tabs__item--active">
+        <a href="index.html" class="md-tabs__link">
+          
+  
+  
+    
+  
+  课程
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../diy/index.html" class="md-tabs__link">
+          
+  
+  
+    
+  
+  自学
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../Miscellaneous/index.html" class="md-tabs__link">
+          
+  
+  
+    
+  
+  Miscellaneous
+
+        </a>
+      </li>
+    
+  
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="导航栏" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href=".." title="YuXian Collection" class="md-nav__button md-logo" aria-label="YuXian Collection" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    YuXian Collection
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_1" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../index.html" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Home
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_1_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_1">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Home
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" checked>
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="index.html" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    课程
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_2" id="__nav_2_label" tabindex="">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    课程
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="Comments.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    介绍
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_3" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="%E5%BC%B9%E6%80%A7%E5%8A%9B%E5%AD%A6/index.html" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    弹性力学
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_2_3" id="__nav_2_3_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    弹性力学
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="%E5%BC%B9%E6%80%A7%E5%8A%9B%E5%AD%A6/%E5%BA%94%E5%8A%9B%E5%BA%94%E5%8F%98%E7%90%86%E8%AE%BA.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    应力应变理论
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="%E6%B5%81%E4%BD%93%E5%8A%9B%E5%AD%A6/%E6%B5%81%E4%BD%93%E5%8A%9B%E5%AD%A6.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    流体力学
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_5" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="%E6%8C%AF%E5%8A%A8%E5%8A%9B%E5%AD%A6/index.html" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    振动力学
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_2_5" id="__nav_2_5_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_5">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    振动力学
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="%E6%8C%AF%E5%8A%A8%E5%8A%9B%E5%AD%A6/%E8%87%AA%E7%94%B1%E6%8C%AF%E5%8A%A8.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    自由振动
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="%E6%8C%AF%E5%8A%A8%E5%8A%9B%E5%AD%A6/%E5%8D%95%E8%87%AA%E7%94%B1%E5%BA%A6%E6%8C%AF%E5%8A%A8.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    单自由度振动
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="%E6%8C%AF%E5%8A%A8%E5%8A%9B%E5%AD%A6/%E5%A4%9A%E8%87%AA%E7%94%B1%E5%BA%A6%E6%8C%AF%E5%8A%A8.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    多自由度振动
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="%E6%8C%AF%E5%8A%A8%E5%8A%9B%E5%AD%A6/%E8%BF%9E%E7%BB%AD%E7%B3%BB%E7%BB%9F%E6%8C%AF%E5%8A%A8%20I.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    连续系统振动 I
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="%E6%8C%AF%E5%8A%A8%E5%8A%9B%E5%AD%A6/%E8%BF%9E%E7%BB%AD%E7%B3%BB%E7%BB%9F%E6%8C%AF%E5%8A%A8%20II.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    连续系统振动 II
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="%E6%8C%AF%E5%8A%A8%E5%8A%9B%E5%AD%A6/%E9%9D%9E%E7%BA%BF%E6%80%A7%E6%8C%AF%E5%8A%A8.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    非线性振动
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_6" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="%E6%9C%89%E9%99%90%E5%85%83%E6%96%B9%E6%B3%95/index.html" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    有限元方法
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_2_6" id="__nav_2_6_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_6">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    有限元方法
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="%E6%9C%89%E9%99%90%E5%85%83%E6%96%B9%E6%B3%95/Introduction%20For%20FEM.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Introduction For FEM
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="%E6%9C%89%E9%99%90%E5%85%83%E6%96%B9%E6%B3%95/stiffness%20Methods.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Stiffness Method
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="%E6%9C%89%E9%99%90%E5%85%83%E6%96%B9%E6%B3%95/Bar%20Beam%20Plate.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Bar Beam and Plate
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="%E6%9C%89%E9%99%90%E5%85%83%E6%96%B9%E6%B3%95/Plane%20Problem%20Axisymmetric.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Plane Problem Axisymmetric
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="%E6%9C%89%E9%99%90%E5%85%83%E6%96%B9%E6%B3%95/Numerical%20Analysis.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Numerical Analysis
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="%E6%9C%89%E9%99%90%E5%85%83%E6%96%B9%E6%B3%95/Practical%20Consideration.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Practical Consideration
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="%E6%9C%89%E9%99%90%E5%85%83%E6%96%B9%E6%B3%95/Nonlinearity.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Nonlinearity
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="%E6%9C%89%E9%99%90%E5%85%83%E6%96%B9%E6%B3%95/Heat%20Problem.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Heat Problem
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="%E6%9C%89%E9%99%90%E5%85%83%E6%96%B9%E6%B3%95/Vibration.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Vibration
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="%E6%9C%89%E9%99%90%E5%85%83%E6%96%B9%E6%B3%95/Weighted%20Residual%20Methods.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Weighted Residual Method
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_7" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="%E7%94%9F%E7%89%A9%E5%8A%9B%E5%AD%A6%E5%9F%BA%E7%A1%80/index.html" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    生物力学基础
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_7_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_7">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    生物力学基础
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_8" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="%E6%95%B0%E6%8D%AE%E5%BB%BA%E6%A8%A1%E4%B8%8E%E5%88%86%E6%9E%90/index.html" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    数据建模与分析
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_2_8" id="__nav_2_8_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_8_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_8">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    数据建模与分析
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="%E6%95%B0%E6%8D%AE%E5%BB%BA%E6%A8%A1%E4%B8%8E%E5%88%86%E6%9E%90/%E6%84%9F%E7%9F%A5%E6%9C%BA.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    感知机
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="%E6%95%B0%E6%8D%AE%E5%BB%BA%E6%A8%A1%E4%B8%8E%E5%88%86%E6%9E%90/k-%E8%BF%91%E9%82%BB%E7%AE%97%E6%B3%95.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    k-近邻算法
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="%E6%95%B0%E6%8D%AE%E5%BB%BA%E6%A8%A1%E4%B8%8E%E5%88%86%E6%9E%90/%E6%9C%B4%E7%B4%A0%E8%B4%9D%E5%8F%B6%E6%96%AF.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    朴素贝叶斯
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="%E6%95%B0%E6%8D%AE%E5%BB%BA%E6%A8%A1%E4%B8%8E%E5%88%86%E6%9E%90/%E5%86%B3%E7%AD%96%E6%A0%91.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    决策树
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="%E6%95%B0%E6%8D%AE%E5%BB%BA%E6%A8%A1%E4%B8%8E%E5%88%86%E6%9E%90/Logistic%20%E5%9B%9E%E5%BD%92%E5%92%8C%E6%9C%80%E5%A4%A7%E7%86%B5%E6%A8%A1%E5%9E%8B.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Logistic 回归和最大熵模型
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="%E6%95%B0%E6%8D%AE%E5%BB%BA%E6%A8%A1%E4%B8%8E%E5%88%86%E6%9E%90/SVM.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    SVM
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="%E6%95%B0%E6%8D%AE%E5%BB%BA%E6%A8%A1%E4%B8%8E%E5%88%86%E6%9E%90/Adaboost.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Adaboost
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="%E6%95%B0%E6%8D%AE%E5%BB%BA%E6%A8%A1%E4%B8%8E%E5%88%86%E6%9E%90/EM%20%E7%AE%97%E6%B3%95.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    EM 算法
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="%E6%95%B0%E6%8D%AE%E5%BB%BA%E6%A8%A1%E4%B8%8E%E5%88%86%E6%9E%90/%E8%81%9A%E7%B1%BB%E6%96%B9%E6%B3%95.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    聚类方法
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="%E6%95%B0%E6%8D%AE%E5%BB%BA%E6%A8%A1%E4%B8%8E%E5%88%86%E6%9E%90/%E5%A5%87%E5%BC%82%E5%80%BC%E5%88%86%E8%A7%A3.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    奇异值分解
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="%E6%95%B0%E6%8D%AE%E5%BB%BA%E6%A8%A1%E4%B8%8E%E5%88%86%E6%9E%90/%E4%B8%BB%E6%88%90%E5%88%86%E5%88%86%E6%9E%90.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    主成分分析
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="%E6%95%B0%E6%8D%AE%E5%BB%BA%E6%A8%A1%E4%B8%8E%E5%88%86%E6%9E%90/%E9%A9%AC%E5%B0%94%E5%8F%AF%E5%A4%AB%E9%93%BE%E8%92%99%E7%89%B9%E5%8D%A1%E7%BD%97%E6%B3%95.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    马尔可夫链蒙特卡罗法
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="%E6%95%B0%E6%8D%AE%E5%BB%BA%E6%A8%A1%E4%B8%8E%E5%88%86%E6%9E%90/Statistical%20Machine%20Learning%20and%20Convex%20Optimization.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Statistical Machine Learning and Convex Optimization
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_9" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="CFD/index.html" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    计算流体力学
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_9_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_9">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    计算流体力学
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="%E7%A4%BE%E4%BA%A4%E7%BD%91%E7%BB%9C%E5%AE%89%E5%85%A8%E4%B8%8E%E9%9A%90%E7%A7%81.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    社交网络安全与隐私
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_11" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="HPC/index.html" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    HPC
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_2_11" id="__nav_2_11_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_11_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_11">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    HPC
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="HPC/Hidden%20World%20Beneath%20Your%20Code.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Hidden World Beneath Your Code
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="HPC/Vectorization.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    向量化基础
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="HPC/OpenMP%26MPI.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    OpenMP & MPI
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="HPC/C%2B%2B.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    C++ 并行设计
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    连续介质力学 I
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="Continumm%20Mechanics%20I.html" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    连续介质力学 I
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="目录">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目录
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#tensor" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Tensor
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Tensor">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#orthogonal-tensor" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Orthogonal tensor
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#dual-vector" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Dual vector
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#invariants-of-a-tensor" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Invariants of a tensor
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#description-of-motions-of-a-continuum" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Description of motions of a Continuum
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Description of motions of a Continuum">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#两种运动描述" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        两种运动描述
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#物质导数" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        物质导数
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#infinitesimal-deformation" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Infinitesimal Deformation
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Infinitesimal Deformation">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#principal-strain" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Principal strain
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#time-rate-of-change-of-a-material-element" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Time rate of change of a material element
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#polar-decomposition" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Polar decomposition
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#stress" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Stress
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#piola-kirchhoff-stress-tensor" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Piola kirchhoff stress tensor
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../diy/index.html" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    自学
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_3" id="__nav_3_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    自学
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../diy/%E6%9A%91%E5%81%87%E8%AF%BE%E7%A8%8B%E8%AE%B0%E5%BD%95.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    24暑假课程总结
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../diy/%E8%B7%A8%E4%B8%93%E4%B8%9A/%E8%B7%A8%E4%B8%93%E4%B8%9A.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    跨专业课程
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_4" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../diy/EECS498/index.html" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    EECS498
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_3_4" id="__nav_3_4_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_4">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    EECS498
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../diy/EECS498/Image%20Classification.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Image Classification
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../diy/EECS498/Linear%20Classifier.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Linear Classifier
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../diy/EECS498/Regularization%20and%20Optimization.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Regularization and Optimization
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../diy/EECS498/Backpropagation.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Backpropagation
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../diy/EECS498/Neural%20Network.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Neural Networks
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../diy/EECS498/Convolutional%20Networks.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Convolutional Networks
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../diy/EECS498/CNN%20Architectures.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    CNN Architectures
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../diy/EECS498/Training%20Neural%20Networks%20%E2%85%A0.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Training Neural Networks Ⅰ
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../diy/EECS498/Training%20Neural%20Networks%20%E2%85%A1.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Training Neural Networks Ⅱ
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../diy/EECS498/CNN%20Architectures%20%E2%85%A1.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    CNN Architectures Ⅱ
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../diy/EECS498/Object%20Detection.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Object Detection
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../diy/EECS498/Object%20Detectors.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Object Detectors
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../diy/EECS498/Image%20Segmentation.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Image Segmentation
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../diy/EECS498/Recurrent%20Networks.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Recurrent Networks
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../diy/EECS498/Attention.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Attention
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_5" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../diy/CS198/index.html" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    CS198
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_5">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    CS198
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_6" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../diy/CS285/index.html" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    CS285
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_3_6" id="__nav_3_6_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_6">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    CS285
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../diy/CS285/Before%20CS258.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Before CS258
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../diy/CS285/Supervised%20Learning%20of%20Behaviors.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Supervised Learning of Behaviors
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../diy/CS285/Introduction%20To%20Reinforcement%20Learning.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Introduction To Reinforcement Learning
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../diy/CS285/Policy%20Gradients.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Policy Gradients
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../diy/CS285/Actor-Critic%20Algorithms.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Actor-Critic Algorithms
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../diy/CS285/Value%20Function%20Method.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Value Function Methods
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../diy/CS285/Deep%20RL%20with%20Q-Functions.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Deep RL with Q-Functions
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../diy/CS285/Advanced%20Policy%20Gradients.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Advanced Policy Gradients
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../diy/CS285/Optimal%20Control%20and%20Planning.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Optimal Control and Planning
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../diy/CS285/Model-Based%20Reinforcement%20Learning.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Model-Based Reinforcement Learning
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../diy/CS285/Model-Based%20Policy%20Learning.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Model-Based Policy Learning
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../diy/CS285/Exploration%20I.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Exploration I
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../diy/CS285/Exploration%20II.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Exploration II
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../diy/CS285/Offline%20Reinforcement%20Learning.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Offline Reinforcement Learning
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_7" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../diy/Control/index.html" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Control
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_3_7" id="__nav_3_7_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_7_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_7">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Control
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../diy/Control/Linear%20System.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Linear System
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../diy/Some%20MATH%20Notes.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Math notes
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../diy/recommend.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    好文推荐
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../Miscellaneous/index.html" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Miscellaneous
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_4" id="__nav_4_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Miscellaneous
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_4_2" id="__nav_4_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Paper
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Paper
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Miscellaneous/Paper/A%20Review%20of%20Data-Driven%20Discovery%20for%20Dynamics%20Equation.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    A Review of Data-Driven Discovery for Dynamics Equation
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Miscellaneous/Paper/Data-Driven%20Identification%20of%20Parametric%20Partial%20Differential%20Equations.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Data-Driven Identification of Parametric Partial Differential Equations
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Miscellaneous/Paper/An%20intelligent%20spinal%20soft%20robot%20with%20self-sensing%20adaptability.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    An intelligent spinal soft robot with self-sensing adaptability
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Miscellaneous/Paper/Stochastic%20First-And%20zeroth-Order%20Methods%20For%20Nonconvex%20Stochastic%20Programming.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Stochastic First-And zeroth-Order Methods For Nonconvex Stochastic Programming
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Miscellaneous/Paper/Review%20of%20Active%20Vibration%20Isolation%20Strategies.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Review of Active Vibration Isolation Strategies
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_4_3" id="__nav_4_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    一席
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    一席
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Miscellaneous/Yixi/%E6%BF%80%E8%BF%9B%E7%9A%84%E5%85%B1%E8%AF%86.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    激进的共识
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Miscellaneous/Yixi/%E4%B8%80%E6%AC%A1%E7%94%9F%E6%B4%BB%E5%92%8C%E6%97%A0%E6%95%B0%E6%AC%A1%E7%94%9F%E6%B4%BB.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    一次生活和无数次生活
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_4_4" id="__nav_4_4_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    项目记录
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_4">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    项目记录
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Miscellaneous/Records/Data%20Analysis.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    信号分析
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="目录">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目录
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#tensor" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Tensor
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Tensor">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#orthogonal-tensor" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Orthogonal tensor
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#dual-vector" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Dual vector
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#invariants-of-a-tensor" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Invariants of a tensor
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#description-of-motions-of-a-continuum" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Description of motions of a Continuum
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Description of motions of a Continuum">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#两种运动描述" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        两种运动描述
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#物质导数" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        物质导数
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#infinitesimal-deformation" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Infinitesimal Deformation
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Infinitesimal Deformation">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#principal-strain" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Principal strain
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#time-rate-of-change-of-a-material-element" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Time rate of change of a material element
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#polar-decomposition" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Polar decomposition
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#stress" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Stress
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#piola-kirchhoff-stress-tensor" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Piola kirchhoff stress tensor
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+  <h1>连续介质力学 I</h1>
+
+<div style="margin-top: -30px; font-size: 0.75em; opacity: 0.7;">
+<p><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 2A10 10 0 0 0 2 12a10 10 0 0 0 10 10 10 10 0 0 0 10-10h-2a8 8 0 0 1-8 8 8 8 0 0 1-8-8 8 8 0 0 1 8-8zm6.78 1a.7.7 0 0 0-.48.2l-1.22 1.21 2.5 2.5L20.8 5.7c.26-.26.26-.7 0-.95L19.25 3.2c-.13-.13-.3-.2-.47-.2m-2.41 2.12L9 12.5V15h2.5l7.37-7.38z"/></svg></span> 约 2781 个字 <span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 17H7V3h14m0-2H7a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V3a2 2 0 0 0-2-2M3 5H1v16a2 2 0 0 0 2 2h16v-2H3m12.96-10.71-2.75 3.54-1.96-2.36L8.5 15h11z"/></svg></span> 1 张图片 <span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 20c4.42 0 8-3.58 8-8s-3.58-8-8-8-8 3.58-8 8 3.58 8 8 8m0-18c5.5 0 10 4.5 10 10s-4.5 10-10 10C6.47 22 2 17.5 2 12S6.5 2 12 2m.5 11H11V7h1.5v4.26l3.7-2.13.75 1.3z"/></svg></span> 预计阅读时间 19 分钟</p>
+</div>
+<div class="admonition info">
+<p class="admonition-title"> 说明</p>
+<p>连续介质力学 I ，主要的内容为张量分析+应力应变关系+流体力学，百分之八十的东西都在之前的课上的学过，所以没怎么记（我懒）。其实主要原因是这门课跟我另一门课冲突了，我选择后者因此一节课都没有听过，所以只是记了一些复习的东西：)</p>
+<p>哦对反正我的方向也用不到连续介质力学（材料力学，最多弹性力学），所以学的不咋地（x）</p>
+</div>
+<p>方程中每个项出现的自由指标必须相同</p>
+<ul>
+<li>无意义的等式</li>
+</ul>
+<div class="arithmatex">\[
+a_{i} = b_{j}
+\]</div>
+<ul>
+<li>有意义的等式</li>
+</ul>
+<div class="arithmatex">\[
+a_{i}+k_{i} = c_{i} \,\mathrm{or} \,a_{i}+b_{i}c_{j}d_{j} = f_{i}
+\]</div>
+<div class="admonition example">
+<p class="admonition-title">Example</p>
+<p>如果一个等式里面出现两个自由指标，如</p>
+<div class="arithmatex">\[
+T_{ij} = A_{im}A_{j,}
+\]</div>
+<p>则这是一个九个等式的缩写，其中右端为三项求和</p>
+</div>
+<p>关于 Kronecker 积有趣的文章：<a href="https://statisticseasily.com/glossario/what-is-kronecker-delta-comprehensive-guide/">What is: Kronecker Delta - A Comprehensive Guide</a></p>
+<p>三维形式的 <a href="https://en.wikipedia.org/wiki/Levi-Civita_symbol">Levi-Civita</a> 符号：</p>
+<p><img alt="alt text" src="Source/Epsilontensor.svg" /></p>
+<p>考虑一个标准右手坐标系：<span class="arithmatex">\(\mathbf{e}_{1} = \mathbf{i},\mathbf{e}_{2} =\mathbf{j},\mathbf{e}_{3}=\mathbf{k}\)</span> ，则有：</p>
+<div class="arithmatex">\[
+\mathbf{e}_{i}\times \mathbf{e}_{j} = \sum_{k=1}^{3}\epsilon_{ijk}\mathbf{e}_{k} 
+\]</div>
+<p>根据这个关系式，考虑两个向量的叉乘，则可以写成：</p>
+<div class="arithmatex">\[
+\begin{align}
+\mathbf{u}\times \mathbf{v} &amp;= (u_{i}\mathbf{e}_{i})\times (v_{j} \mathbf{e}_{j}) \\
+&amp; =u_{i}v_{j} \epsilon_{ijk}\mathbf{e}_{k }
+\end{align}
+\]</div>
+<h2 id="tensor">Tensor<a class="headerlink" href="#tensor" title="Permanent link"></a></h2>
+<p>考虑一个三维笛卡尔坐标系中的变换 <span class="arithmatex">\(T\)</span></p>
+<div class="arithmatex">\[
+[T] = \begin{bmatrix}
+T_{11} &amp; T_{12} &amp; T_{13} \\
+T_{21} &amp; T_{22} &amp; T_{23} \\
+T_{31} &amp; T_{32} &amp; T_{33}
+\end{bmatrix}
+\]</div>
+<p>考虑一个单位向量基：<span class="arithmatex">\(\mathbf{e}_{1},\mathbf{e}_{2},\mathbf{e}_{3}\)</span> ，则变换后结果可以记为：</p>
+<div class="arithmatex">\[
+\mathbf{Te}_{i} = T_{ji}\mathbf{e}_{j}
+\]</div>
+<p>称我们所考虑的张量矩阵相对于我们所选的基向量 <span class="arithmatex">\(\left\{ \mathbf{e}_{i} \right\}\)</span></p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>大部分张量的性质可以参考矩阵的性质 </p>
+</div>
+<h3 id="orthogonal-tensor">Orthogonal tensor<a class="headerlink" href="#orthogonal-tensor" title="Permanent link"></a></h3>
+<p>假定两个笛卡尔坐标系 <span class="arithmatex">\(\left\{ \mathbf{e}_{i} \right\}\)</span> 和 <span class="arithmatex">\(\left\{ \mathbf{e}_{i}' \right\}\)</span> 之间满足正交张量变换：</p>
+<div class="arithmatex">\[
+\mathbf{e}_{i}' = \mathbf{Q} \mathbf{e}_{i} =Q_{mi}\mathbf{e}_{m}
+\]</div>
+<p>其中正交张量中的分量满足</p>
+<div class="arithmatex">\[
+Q_{im} Q_{jm}=Q_{mi} Q_{mj} =\delta_{ij}
+\]</div>
+<p><span class="arithmatex">\(Q_{ij}\)</span> 是坐标基向量之间的夹角：</p>
+<div class="arithmatex">\[
+Q_{ij}  = \cos (\mathbf{e}_{i},\mathbf{e}_{j}')
+\]</div>
+<p>给定在 <span class="arithmatex">\(\left\{ \mathbf{e}_{i} \right\}\)</span> 下的向量 <span class="arithmatex">\(\mathbf{a}\)</span> ，则在 <span class="arithmatex">\(\left\{ \mathbf{e}_{i}' \right\}\)</span> 下对应的对应表示为：</p>
+<div class="arithmatex">\[
+[\mathbf{a}]' =[\mathbf{Q}]^{T}[\mathbf{a}]
+\]</div>
+<p>坐标变换：</p>
+<div class="arithmatex">\[
+[T]' = [Q]^{T}[T][Q]  \,\mathrm{ or}\, T_{ij}'=Q_{mi}Q_{nj}T_{mn}
+\]</div>
+<p>其中 <span class="arithmatex">\(Q\)</span> 是坐标变换矩阵</p>
+<p>利用变换法则定义张量：</p>
+<table>
+<thead>
+<tr>
+<th>components</th>
+<th>tensor</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><span class="arithmatex">\(\alpha'=\alpha\)</span></td>
+<td>zeroth-order tensor(scalar)</td>
+</tr>
+<tr>
+<td><span class="arithmatex">\(a_{i}'=Q_{mi}a_{m}\)</span></td>
+<td>first-order tensor(vector)</td>
+</tr>
+<tr>
+<td><span class="arithmatex">\(T_{ij}'=Q_{mi}Q_{nj}T_{mn}\)</span></td>
+<td>second-orfer tensor(tensor)</td>
+</tr>
+<tr>
+<td><span class="arithmatex">\(S_{ijk}'=Q_{mi}Q_{nj}Q_{rk}S_{mnr}\)</span></td>
+<td>third-order tensor</td>
+</tr>
+<tr>
+<td><span class="arithmatex">\(C_{ijkl}'=Q_{mi}Q_{nj}Q_{rk}Q_{sl}C_{mnrs}\)</span></td>
+<td>fourth-order tensor</td>
+</tr>
+</tbody>
+</table>
+<h3 id="dual-vector">Dual vector<a class="headerlink" href="#dual-vector" title="Permanent link"></a></h3>
+<p>张量 <span class="arithmatex">\(T\)</span> 可以表示为一个对称张量和一个反对称张量的和：</p>
+<div class="arithmatex">\[
+T = T^{S} +T^{A}
+\]</div>
+<ul>
+<li>对称张量：</li>
+</ul>
+<div class="arithmatex">\[
+T^{S} = \frac{T+T^{T}}{2} 
+\]</div>
+<ul>
+<li>反对称张量：</li>
+</ul>
+<div class="arithmatex">\[
+T^{A} = \frac{T-T^{T}}{2}
+\]</div>
+<p>反对称张量只有三个独立的分量。（对角线元素为零）</p>
+<div class="admonition note">
+<p class="admonition-title">dual vector of the antisymmetric tensor</p>
+<p>对于一个反对称张量 <span class="arithmatex">\(\mathbf{T}\)</span> ，存在对应的向量 <span class="arithmatex">\(\mathbf{t^{A}}\)</span> 满足对于任意向量 <span class="arithmatex">\(\mathbf{a}\)</span> ，其在张量下的变换 <span class="arithmatex">\(\mathbf{Ta}\)</span> 可以如下叉乘形式：</p>
+<div class="arithmatex">\[
+\mathbf{Ta} = \mathbf{t^{A}}\times \mathbf{a}
+\]</div>
+<p>称 <span class="arithmatex">\(\mathbf{t^{A}}\)</span> 是反对称张量的对偶向量(dual vector) ，也称为轴向量(axial vector)</p>
+</div>
+<p>可以求得：</p>
+<div class="arithmatex">\[
+\mathbf{t^{A}} = T_{32}\mathbf{e}_{1} +T_{13}\mathbf{e}_{2} +T_{21}\mathbf{e}_{3}
+\]</div>
+<p>简写成：</p>
+<div class="arithmatex">\[
+2\mathbf{t^{A}} = -\varepsilon_{ijk}T_{jk}\mathbf{e}_{i} 
+\]</div>
+<p><a href="https://zhuanlan.zhihu.com/p/120309589">张量分析傻瓜入门（翻译）：七、对偶向量 - 知乎</a></p>
+<h3 id="invariants-of-a-tensor">Invariants of a tensor<a class="headerlink" href="#invariants-of-a-tensor" title="Permanent link"></a></h3>
+<p>第一不变量：</p>
+<div class="arithmatex">\[
+I_{1} = T_{ii} =tr \mathbf{T}
+\]</div>
+<p>第二不变量：</p>
+<div class="arithmatex">\[
+I_{2}= \begin{vmatrix}
+T_{11} &amp; T_{12} \\
+T_{21}  &amp; T_{22}
+\end{vmatrix} + \begin{vmatrix}
+T_{22} &amp; T_{23} \\
+T_{32}  &amp; T_{33}
+\end{vmatrix}+ \begin{vmatrix}
+T_{11} &amp; T_{13} \\
+T_{31}  &amp; T_{33}
+\end{vmatrix} = \frac{1}{2}\left( T_{ii}T_{jj}-T_{ij}T_{ji} \right)  
+\]</div>
+<p>第三不变量：</p>
+<div class="arithmatex">\[
+I_{3} = \det [T]
+\]</div>
+<h2 id="description-of-motions-of-a-continuum">Description of motions of a Continuum<a class="headerlink" href="#description-of-motions-of-a-continuum" title="Permanent link"></a></h2>
+<p>参考时间 <span class="arithmatex">\(t_{0}\)</span> ，在 <span class="arithmatex">\((X_{1},X_{2},X_{3})\)</span> 的物质轨迹可以描述为：</p>
+<div class="arithmatex">\[
+\mathbf{x} = \mathbf{x}(\mathbf{X},t)
+\]</div>
+<h3 id="两种运动描述">两种运动描述<a class="headerlink" href="#两种运动描述" title="Permanent link"></a></h3>
+<p>Lagrangian 描述（物质描述）着眼于物质</p>
+<div class="arithmatex">\[
+\mathbf{\Theta} = \hat{\mathbf{\Theta}}(X_{1},X_{2},X_{3},t)
+\]</div>
+<p>Eulerian 描述（空间描述）着眼于流场空间点的描述</p>
+<div class="arithmatex">\[
+\mathbf{\Theta} =  \tilde{\mathbf{\Theta}} (x_{1},x_{2},x_{3},t)
+\]</div>
+<h3 id="物质导数">物质导数<a class="headerlink" href="#物质导数" title="Permanent link"></a></h3>
+<p>物质描述：</p>
+<div class="arithmatex">\[
+\frac{{\rm{D}} {\Theta} }{{\rm {D}} t }  = \left( \frac{\partial \hat{{\Theta}} }{\partial t  }  \right) 
+\]</div>
+<p>空间描述：</p>
+<div class="arithmatex">\[
+\frac{{\rm{D}}{\Theta} }{{\rm {D}} t }  = \left( \frac{\partial \hat{{\Theta}} }{\partial t  }  \right)  + \mathbf{v} \cdot \nabla \tilde{{\Theta}}
+\]</div>
+<p><span class="arithmatex">\(\Theta\)</span> 是任意函数。如速度场 <span class="arithmatex">\(\mathbf{v}\)</span> 可以轨迹描述 <span class="arithmatex">\(\mathbf{x}(\mathbf{X},t)\)</span> 求导得到。</p>
+<h2 id="infinitesimal-deformation">Infinitesimal Deformation<a class="headerlink" href="#infinitesimal-deformation" title="Permanent link"></a></h2>
+<p>考虑一个连续体从初始状态到变形后状态的运动。假定在参考时刻，质点 <span class="arithmatex">\(P\)</span> 在 <span class="arithmatex">\(\mathbf{X}\)</span> ，时间 <span class="arithmatex">\(t\)</span> 质点运动到了新位置 <span class="arithmatex">\(\mathbf{x}\)</span> ，位移向量定义为：</p>
+<div class="arithmatex">\[
+\mathbf{u}(\mathbf{X},t) = \mathbf{x} - \mathbf{X}
+\]</div>
+<p>即：</p>
+<div class="arithmatex">\[
+\mathbf{x} = \mathbf{X} + \mathbf{u}
+\]</div>
+<p>假定 <span class="arithmatex">\(P\)</span> 有一个邻近质点 <span class="arithmatex">\(Q\)</span> 在 <span class="arithmatex">\(\mathbf{X}+d \mathbf{X}\)</span> ，变形后 <span class="arithmatex">\(Q\)</span> 运动到 <span class="arithmatex">\(\mathbf{x}+ d\mathbf{x}\)</span> ，则有：</p>
+<div class="arithmatex">\[
+\mathbf{x}+ d\mathbf{x} =\mathbf{X}+d \mathbf{X}+ \mathbf{u}(\mathbf{X}+d \mathbf{X},t)
+\]</div>
+<p>可得相对变形：</p>
+<div class="arithmatex">\[
+d\mathbf{x} =d \mathbf{X}+ \mathbf{u}(\mathbf{X}+d \mathbf{X},t) -  \mathbf{u}(\mathbf{X},t)
+\]</div>
+<p>当变形量 <span class="arithmatex">\(d\mathbf{X}\)</span> 很小时，有泰勒展开可得：</p>
+<div class="arithmatex">\[
+d\mathbf{x} =(\mathbf{I}+\nabla \mathbf{u})d \mathbf{X}
+\]</div>
+<p>称 <span class="arithmatex">\(\mathbf{F} = \mathbf{I}+\nabla \mathbf{u}\)</span> 为变形梯度张量。</p>
+<p>记 <span class="arithmatex">\(ds\)</span> 为 <span class="arithmatex">\(d \mathbf{x}\)</span> 的长度，<span class="arithmatex">\(d S\)</span> 为 <span class="arithmatex">\(d\mathbf{X}\)</span> 的长度，有：</p>
+<div class="arithmatex">\[
+ds^{2} = d \mathbf{X} \cdot \mathbf{C}d \mathbf{X}
+\]</div>
+<p>其中 </p>
+<div class="arithmatex">\[
+\mathbf{C} = \mathbf{F}^{T}\mathbf{F}
+\]</div>
+<p><span class="arithmatex">\(\mathbf{C}\)</span> 成为 right Cauchy-Green deformation tensor 。 展开有</p>
+<div class="arithmatex">\[
+\mathbf{C}= \mathbf{I} + \nabla \mathbf{u}+(\nabla \mathbf{u})^{T} + (\nabla \mathbf{u})^{T}(\nabla \mathbf{u}) \triangleq \mathbf{I} + 2\mathbf{E}^{*}
+\]</div>
+<p>对于小变形，可以忽略 <span class="arithmatex">\((\mathbf{u})^{T}(\nabla \mathbf{u})\)</span>  ，则取 <span class="arithmatex">\(\nabla \mathbf{u}\)</span> 对称部分 <span class="arithmatex">\(E = \frac{1}{2}[\nabla \mathbf{u}+(\nabla \mathbf{u})^{T}]\)</span> 为小变形下的应变张量。带回有：</p>
+<div class="arithmatex">\[
+d \mathbf{x}^{(1)}\cdot d\mathbf{x}^{(2)} = d \mathbf{X}^{(1)} \cdot d \mathbf{X}^{(2)} +2 d \mathbf{X}^{(1)} \cdot \mathbf{E}d \mathbf{X}^{(2)}
+\]</div>
+<p>小变形情况有：</p>
+<div class="arithmatex">\[
+\frac{{\rm{d}}  s -\mathrm{d}S }{{\rm {d}} S } = \mathbf{n}\cdot \mathbf{En} = E_{nn} 
+\]</div>
+<p><span class="arithmatex">\(\frac{{\rm{d}}  s -\mathrm{d}S }{{\rm {d}} S }\)</span> 为单位伸长，即正应变，右边表示应变张量在 <span class="arithmatex">\(\mathbf{n}\)</span> 方向上的投影。即沿原始方向 <span class="arithmatex">\(\mathbf{n}\)</span> 的单位伸长等于 <span class="arithmatex">\(\mathbf{n}\cdot \mathbf{En}\)</span> </p>
+<p>在变形前，取两个相互垂直的微小线元：</p>
+<div class="arithmatex">\[
+d\mathbf{X}^{(1)} = dS_{1} \mathbf{m} \quad d \mathbf{X}^{(2)} = dS_{2} \mathbf{n}
+\]</div>
+<p>变形后取乘积：</p>
+<div class="arithmatex">\[
+d \mathbf{x}^{(1)}\cdot d\mathbf{x}^{(2)} = d \mathbf{X}^{(1)} \cdot d \mathbf{X}^{(2)} +2 d \mathbf{X}^{(1)} \cdot \mathbf{E}d \mathbf{X}^{(2)}
+\]</div>
+<p>利用正交性可以得到：</p>
+<div class="arithmatex">\[
+ds_{1}ds_{2} \cos(\theta) = 2dS_{1 }dS_{2}(\mathbf{m}\cdot \mathbf{En})
+\]</div>
+<p>定义剪应变 <span class="arithmatex">\(\gamma\)</span> 为角度减少量，则有 <span class="arithmatex">\(\theta = \frac{\pi}{2}-\gamma\)</span> ：</p>
+<div class="arithmatex">\[
+ds_{1} ds_{2} \sin\gamma = 2dS_{1 }dS_{2}(\mathbf{m}\cdot \mathbf{En})
+\]</div>
+<h3 id="principal-strain">Principal strain<a class="headerlink" href="#principal-strain" title="Permanent link"></a></h3>
+<p>对于一个应力张量 <span class="arithmatex">\(E\)</span> ，其特征值 <span class="arithmatex">\(\lambda\)</span> 也称为主应力，包含了从该质点出发的所有方向中最与最小的正应力。</p>
+<h3 id="time-rate-of-change-of-a-material-element">Time rate of change of a material element<a class="headerlink" href="#time-rate-of-change-of-a-material-element" title="Permanent link"></a></h3>
+<div class="arithmatex">\[
+\frac{{\rm{D}}   }{{\rm {D}}  t } d \mathbf{x} = (\nabla \mathbf{v})d \mathbf{x} 
+\]</div>
+<p>可以速度梯度分成对称张量和反对称张量：</p>
+<div class="arithmatex">\[
+(\nabla \mathbf{v}) = \mathbf{D } + \mathbf{W}
+\]</div>
+<p>其中：</p>
+<div class="arithmatex">\[
+\mathbf{D} = \frac{1}{2}\left[ (\nabla \mathbf{v})+(\nabla \mathbf{v})^{T} \right]  \quad \mathbf{W} = \frac{1}{2}\left[ (\nabla \mathbf{v})-(\nabla \mathbf{v})^{T} \right] 
+\]</div>
+<p>对于 </p>
+<div class="arithmatex">\[
+d \mathbf{x}\cdot d\mathbf{x} = (ds)^{2}
+\]</div>
+<p>取物质导数：</p>
+<div class="arithmatex">\[
+2 d \mathbf{x} \cdot \frac{D}{Dt} d \mathbf{x} =2 ds \frac{D(ds)}{Dt}
+\]</div>
+<p>看开左式有：</p>
+<div class="arithmatex">\[
+d \mathbf{x} \cdot \frac{D}{Dt} d \mathbf{x} = d \mathbf{x} \cdot \mathbf{D}d \mathbf{x}+d \mathbf{x} \cdot \mathbf{W}d \mathbf{x}
+\]</div>
+<p>利用反对称性质有： <span class="arithmatex">\(d \mathbf{x} \cdot \mathbf{W}d \mathbf{x} =0\)</span> 则</p>
+<div class="arithmatex">\[
+ds \frac{D(ds)}{Dt} = d \mathbf{x} \cdot \mathbf{D}d \mathbf{x}
+\]</div>
+<p>取 <span class="arithmatex">\(d \mathbf{x}= ds \mathbf{n}\)</span>  则有：</p>
+<div class="arithmatex">\[
+\frac{1}{ds} \frac{D(ds)}{Dt} = \mathbf{n}\cdot \mathbf{D}\mathbf{n} = D_{nn}
+\]</div>
+<hr />
+<p>对于 <span class="arithmatex">\(\mathbf{W}\)</span> ，有：</p>
+<div class="arithmatex">\[
+\mathbf{W} \mathbf{a} = \omega \times \mathbf{a}
+\]</div>
+<p>其中 </p>
+<div class="arithmatex">\[
+\omega = - (W_{23}\mathbf{e}_{1}+W_{31}\mathbf{e}_{2}+W_{12}\mathbf{e}_{3})
+\]</div>
+<p>因此</p>
+<div class="arithmatex">\[
+\frac{{\rm{D}}   }{{\rm {D}}  t } d \mathbf{x} =\mathbf{D}d \mathbf{x} +\omega \times d \mathbf{x}
+\]</div>
+<h2 id="polar-decomposition">Polar decomposition<a class="headerlink" href="#polar-decomposition" title="Permanent link"></a></h2>
+<p>对于任何具有非零行列式的变形梯度张量 <span class="arithmatex">\(\mathbf{F}\)</span> ，总是将其分解称一个正交张量和对称张量的乘积，即：</p>
+<div class="arithmatex">\[
+\mathbf{F} = \mathbf{RU}
+\]</div>
+<p>或者 </p>
+<div class="arithmatex">\[
+\mathbf{F} = \mathbf{VR}
+\]</div>
+<p>其中 <span class="arithmatex">\(\mathbf{U}\)</span> 和 <span class="arithmatex">\(\mathbf{V}\)</span> 为正定对称张量，分别成为右拉伸张量和左拉伸张量。对于 </p>
+<div class="arithmatex">\[
+d \mathbf{x} = \mathbf{F} d \mathbf{X} = \mathbf{RU}d \mathbf{x}
+\]</div>
+<p>其中 <span class="arithmatex">\(\mathbf{U}d\mathbf{x}\)</span> 描述一个纯拉伸变形（不发生旋转），而 <span class="arithmatex">\(\mathbf{R}\)</span> 的作用就相当于是旋转一个刚体。同样的对于第二个分解，我们可以视作是对刚体做了一个旋转，然后再对其做一个纯拉伸。可以很容易得到如下式子：</p>
+<div class="arithmatex">\[
+\mathbf{U} = \mathbf{R}^{T} \mathbf{VR}
+\]</div>
+<p>从几何上讲，我们讲运动视为先旋转后纯拉伸或者先纯拉伸后旋转，这两者没有区别，但是导致了两个不同的拉伸张量，其分量具有不同的几何意义。根据这两个拉伸张量，定义两个常用的变形张量：</p>
+<ul>
+<li>右柯西-格林张量：</li>
+</ul>
+<div class="arithmatex">\[
+\mathbf{C} \triangleq \mathbf{U}^{2}
+\]</div>
+<ul>
+<li>左柯西-格林张量</li>
+</ul>
+<div class="arithmatex">\[
+\mathbf{B} \triangleq V^{2}
+\]</div>
+<p>对于给定的 <span class="arithmatex">\(\mathbf{F}\)</span> ，存在对应唯一的 <span class="arithmatex">\(\mathbf{U}\)</span> </p>
+<div class="arithmatex">\[
+\mathbf{U}^{2} = \mathbf{F}^{T}\mathbf{F}
+\]</div>
+<p><span class="arithmatex">\(C_{ii} =( \frac{{\rm{d}}  s_{i} }{{\rm {d}} S_{i} })^{2}\)</span> 描述了沿 <span class="arithmatex">\(e_{i}\)</span> 方向的变形量。</p>
+<div class="arithmatex">\[
+ds_{1} ds_{2} \cos \beta = dS_{1} dS_{2} \mathbf{e}_{1}\cdot \mathbf{C}\mathbf{e}_{2}
+\]</div>
+<p>描述夹角。</p>
+<h2 id="stress">Stress<a class="headerlink" href="#stress" title="Permanent link"></a></h2>
+<p><span class="arithmatex">\(\mathbf{e}_{i}\)</span> 平面上的应力向量 <span class="arithmatex">\(\mathbf{t}_{\mathbf{e}_{i}}\)</span> 由下式给出：</p>
+<div class="arithmatex">\[
+\mathbf{t}_{\mathbf{e}_{i}} = \mathbf{T}\mathbf{e}_{i} = \mathbf{T}_{mi}\mathbf{e}_{m}
+\]</div>
+<p>已知一个平面的法向量 <span class="arithmatex">\(\mathbf{n}\)</span> ，可得在该平面得应力分布：</p>
+<div class="arithmatex">\[
+\mathbf{t} = \mathbf{T}\mathbf{n}
+\]</div>
+<p>取主应力方向为基向量，对于任意平面 <span class="arithmatex">\(\mathbf{n}=n_{1}\mathbf{e}_{1}+n_{2}\mathbf{e}_{2} + n_{3}\mathbf{e}_{3}\)</span> 的应力向量为</p>
+<div class="arithmatex">\[
+\mathbf{t} = n_{1}T_{1}\mathbf{e}_{1} + n_{2}T_{2}\mathbf{e}_{2}+ n_{3}T_{3}\mathbf{e}_{3}
+\]</div>
+<p>平面上的主应力表示为：</p>
+<div class="arithmatex">\[
+T_{n} = \mathbf{n}\cdot \mathbf{t} = n_{1}^{2}T_{1}+n_{2}^{2}T_{2} + n_{3}^{2}T_{3}
+\]</div>
+<p>切应力的大小可由如下表达式给出：</p>
+<div class="arithmatex">\[
+T^{2}_{s} =\lvert \mathbf{t} \rvert^{2} -T_{n}^{2} 
+\]</div>
+<h2 id="piola-kirchhoff-stress-tensor">Piola kirchhoff stress tensor<a class="headerlink" href="#piola-kirchhoff-stress-tensor" title="Permanent link"></a></h2>
+<p>柯西应力张量是基于当前位置的微分面积定义的，同样可以基于未变形面积定义应力张量，他们被称为第一类和第二类 Piola kirchhoff 应力张量。</p>
+<p>Nanson 公式给出连续介质变形过程中参考构型与当前构型之间的面积元素变换关系：</p>
+<div class="arithmatex">\[
+\mathbf{n}_{0}dA_{0}=\frac{1}{\det \mathbf{F}} \mathbf{F}^{T} \mathbf{n}dA
+\]</div>
+<p>第一类 Piola-Kirchhoff 应力张量定义为</p>
+<div class="arithmatex">\[
+\mathbf{t}_{0} = \mathbf{T}_{0}\mathbf{n}_{0}
+\]</div>
+<p>其中 <span class="arithmatex">\(\mathbf{T}_{0}=J \mathbf{TF}^{-T} ,J= \det \mathbf{F}\)</span> 。PK 1 应力描述的是当前力在参考面积（未变形状态）上的分布，表示参考构型下单位面积上所受的当前构型下的力。一般未非对称张量。</p>
+<p>第二类 Piola-Kirchhoff 应力张量定义为：</p>
+<div class="arithmatex">\[
+\tilde{T} = J \mathbf{F}^{-1}\mathbf{T}\mathbf{F}^{-T}
+\]</div>
+<p>这是一个对称张量，描述了参考力在参考面积上的分布。</p>
+
+
+
+
+
+
+
+  
+  
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  回到页面顶部
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    
+      
+      <nav class="md-footer__inner md-grid" aria-label="页脚" >
+        
+          
+          <a href="HPC/C%2B%2B.html" class="md-footer__link md-footer__link--prev" aria-label="上一页: C++ 并行设计">
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+            </div>
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                上一页
+              </span>
+              <div class="md-ellipsis">
+                C++ 并行设计
+              </div>
+            </div>
+          </a>
+        
+        
+          
+          <a href="../diy/index.html" class="md-footer__link md-footer__link--next" aria-label="下一页: 目录">
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                下一页
+              </span>
+              <div class="md-ellipsis">
+                目录
+              </div>
+            </div>
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11z"/></svg>
+            </div>
+          </a>
+        
+      </nav>
+    
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      Copyright &copy;
+    </div>
+  
+  
+</div>
+      
+        
+<div class="md-social">
+  
+    
+    
+    
+    
+    <a href="mailto:<xianyu403@gmail.com>" target="_blank" rel="noopener" title="" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M536.4-26.3c9.8-3.5 20.6-1 28 6.3s9.8 18.2 6.3 28l-178 496.9c-5 13.9-18.1 23.1-32.8 23.1-14.2 0-27-8.6-32.3-21.7l-64.2-158c-4.5-11-2.5-23.6 5.2-32.6l94.5-112.4c5.1-6.1 4.7-15-.9-20.6s-14.6-6-20.6-.9l-112.4 94.3c-9.1 7.6-21.6 9.6-32.6 5.2L38.1 216.8c-13.1-5.3-21.7-18.1-21.7-32.3 0-14.7 9.2-27.8 23.1-32.8z"/></svg>
+    </a>
+  
+    
+    
+    
+    
+      
+      
+    
+    <a href="https://github.com/Aphia-XianYu" target="_blank" rel="noopener" title="github.com" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M173.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6m-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3m44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9M252.8 8C114.1 8 8 113.3 8 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C436.2 457.8 504 362.9 504 252 504 113.3 391.5 8 252.8 8M105.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1m-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7m32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1m-11.4-14.7c-1.6 1-1.6 3.6 0 5.9s4.3 3.3 5.6 2.3c1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2"/></svg>
+    </a>
+  
+    
+    
+    
+    
+      
+      
+    
+    <a href="https://space.bilibili.com" target="_blank" rel="noopener" title="space.bilibili.com" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M488.6 104.1c16.7 18.1 24.4 39.7 23.3 65.7v202.4c-.4 26.4-9.2 48.1-26.5 65.1-17.2 17-39.1 25.9-65.5 26.7H92c-26.4-.8-48.2-9.8-65.3-27.2S.7 396.5 0 368.2V169.8c.8-26 9.7-47.6 26.7-65.7C43.8 87.8 65.5 78.8 92 78h29.4L96 52.2c-5.7-5.7-8.6-13-8.6-21.8S90.3 14.3 96 8.6 109 0 117.9 0s16.1 2.9 21.9 8.6L213.1 78h88l74.5-69.4C381.7 2.9 389.2 0 398 0s16.1 2.9 21.9 8.6c5.7 5.7 8.6 13 8.6 21.8s-2.9 16.1-8.6 21.8L394.6 78h29.3c26.4.8 48 9.8 64.7 26.1m-38.8 69.7c-.4-9.6-3.7-17.4-10.7-23.5-5.2-6.1-14-9.4-22.7-9.8H96c-9.6.4-17.4 3.7-23.6 9.8-6.1 6.1-9.4 13.9-9.8 23.5v194.4c0 9.2 3.3 17 9.8 23.5s14.4 9.8 23.6 9.8h320.4c9.2 0 17-3.3 23.3-9.8s9.7-14.3 10.1-23.5zm-264.3 42.7c6.3 6.3 9.7 14.1 10.1 23.2V273c-.4 9.2-3.7 16.9-9.8 23.2-6.2 6.3-14 9.5-23.6 9.5s-17.5-3.2-23.6-9.5-9.4-14-9.8-23.2v-33.3c.4-9.1 3.8-16.9 10.1-23.2s13.2-9.6 23.3-10c9.2.4 17 3.7 23.3 10m191.5 0c6.3 6.3 9.7 14.1 10.1 23.2V273c-.4 9.2-3.7 16.9-9.8 23.2s-14 9.5-23.6 9.5-17.4-3.2-23.6-9.5c-7-6.3-9.4-14-9.7-23.2v-33.3c.3-9.1 3.7-16.9 10-23.2s14.1-9.6 23.3-10c9.2.4 17 3.7 23.3 10"/></svg>
+    </a>
+  
+    
+    
+    
+    
+    <a href="" target="_blank" rel="noopener" title="" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 384 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="m40.1 467.1-11.2 9c-3.2 2.5-7.1 3.9-11.1 3.9C8 480 0 472 0 462.2V192C0 86 86 0 192 0s192 86 192 192v270.2c0 9.8-8 17.8-17.8 17.8-4 0-7.9-1.4-11.1-3.9l-11.2-9c-13.4-10.7-32.8-9-44.1 3.9l-30.5 35c-3.3 3.8-8.2 6-13.3 6s-9.9-2.2-13.3-6l-26.6-30.5c-12.7-14.6-35.4-14.6-48.2 0L141.3 506c-3.3 3.8-8.2 6-13.3 6s-9.9-2.2-13.3-6l-30.5-35c-11.3-12.9-30.7-14.6-44.1-3.9M160 192a32 32 0 1 0-64 0 32 32 0 1 0 64 0m96 32a32 32 0 1 0 0-64 32 32 0 1 0 0 64"/></svg>
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "..", "features": ["content.code.annotate", "content.action.edit", "navigation.tracking", "navigation.top", "navigation.tabs", "navigation.footer", "navigation.indexes", "navigation.instant", "navigation.collapsible", "search.suggest", "search.share"], "search": "../assets/javascripts/workers/search.7a47a382.min.js", "tags": null, "translations": {"clipboard.copied": "\u5df2\u590d\u5236", "clipboard.copy": "\u590d\u5236", "search.result.more.one": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.more.other": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 # \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.none": "\u6ca1\u6709\u627e\u5230\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.one": "\u627e\u5230 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.other": "# \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.placeholder": "\u952e\u5165\u4ee5\u5f00\u59cb\u641c\u7d22", "search.result.term.missing": "\u7f3a\u5c11", "select.version": "\u9009\u62e9\u5f53\u524d\u7248\u672c"}, "version": null}</script>
+    
+    
+      <script src="../assets/javascripts/bundle.e71a0d61.min.js"></script>
+      
+        <script src="../javascripts/extra.js"></script>
+      
+        <script src="../javascripts/mathjax.js"></script>
+      
+        <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+      
+        <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+      
+        <script src="https://cdn.jsdelivr.net/npm/gitalk@latest/dist/gitalk.min.js"></script>
+      
+        <script src="https://cdn.jsdelivr.net/npm/mermaid@10.0.2/dist/add-html-label-6e56ed67.min.js"></script>
+      
+    
+  </body>
+</html>
